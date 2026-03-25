@@ -48,8 +48,10 @@ User → Frontend (Next.js UI)
 
 # 2. FILE AND FOLDER STRUCTURE
 
+The Next.js app lives at the **repository root** (same directory as `package.json`) for straightforward Vercel and local workflows.
+
 ```
-/project-root
+/repository-root   ← Next.js project root (deploy this)
 │
 ├── /app
 │   ├── /page.tsx

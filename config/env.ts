@@ -33,3 +33,20 @@ export function getSmtpConfig() {
 export function getRecaptchaSecret(): string | null {
   return process.env.RECAPTCHA_SECRET_KEY?.trim() || null;
 }
+
+/** Plaintext admin login password (set in deployment). */
+export function getAdminPassword(): string {
+  return process.env.ADMIN_PASSWORD?.trim() ?? "";
+}
+
+/**
+ * HMAC secret for admin session cookie. Prefer a long random string.
+ * Falls back to ADMIN_PASSWORD if unset (weaker but simpler for small teams).
+ */
+export function getAdminSessionSecret(): string {
+  return (
+    process.env.ADMIN_SESSION_SECRET?.trim() ||
+    process.env.ADMIN_PASSWORD?.trim() ||
+    ""
+  );
+}
