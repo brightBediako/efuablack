@@ -6,6 +6,9 @@ import { AdminLogoutButton } from "@/components/admin/AdminLogoutButton";
 
 const items = [
   { href: "/admin", label: "Overview" },
+  { href: "/admin/music", label: "Music" },
+  { href: "/admin/events", label: "Events" },
+  { href: "/admin/media", label: "Media" },
   { href: "/admin/bookings", label: "Bookings" },
   { href: "/admin/contacts", label: "Contacts" },
   { href: "/admin/subscribers", label: "Subscribers" },
