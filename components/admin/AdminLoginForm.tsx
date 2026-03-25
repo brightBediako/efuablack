@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { MaterialSymbol } from "@/components/MaterialSymbol";
 
 export function AdminLoginForm() {
   const router = useRouter();
@@ -34,10 +35,18 @@ export function AdminLoginForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="mx-auto max-w-sm space-y-6 rounded-xl border border-outline-variant/60 bg-surface-container-low p-8 shadow-sm">
-      <div>
-        <h1 className="font-headline text-2xl text-primary">Admin sign in</h1>
-        <p className="mt-1 font-body text-sm text-on-surface-variant">Enter the site admin password.</p>
+    <form
+      onSubmit={onSubmit}
+      className="mx-auto w-full max-w-md space-y-6 rounded-2xl border border-outline-variant/60 bg-surface-container-lowest/70 p-8 shadow-sm backdrop-blur"
+    >
+      <div className="space-y-2">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-secondary/20 text-secondary ring-1 ring-secondary/30">
+            <MaterialSymbol name="lock" className="text-2xl" filled />
+          </span>
+          <h1 className="font-headline text-2xl text-primary">Admin sign in</h1>
+        </div>
+        <p className="font-body text-sm text-on-surface-variant">Enter the site admin password.</p>
       </div>
       <div className="space-y-2">
         <label htmlFor="admin-password" className="text-xs font-label font-semibold uppercase tracking-widest text-secondary">
@@ -62,7 +71,7 @@ export function AdminLoginForm() {
       <button
         type="submit"
         disabled={pending}
-        className="w-full rounded-full bg-primary px-6 py-3 font-label text-sm font-bold uppercase tracking-widest text-on-primary transition-opacity hover:opacity-95 disabled:opacity-60"
+        className="w-full rounded-xl bg-gradient-to-r from-primary to-primary-container px-6 py-3 font-label text-sm font-bold uppercase tracking-widest text-on-primary transition-opacity hover:opacity-95 disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-secondary"
       >
         {pending ? "Signing in…" : "Sign in"}
       </button>

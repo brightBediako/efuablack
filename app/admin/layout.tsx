@@ -6,5 +6,9 @@ export const metadata: Metadata = {
 };
 
 export default function AdminRootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <div className="min-h-screen bg-surface font-body text-on-surface antialiased">{children}</div>;
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-surface via-surface to-surface font-body text-on-surface antialiased">
+      {children}
+    </div>
+  );
 }

@@ -2,6 +2,9 @@ import { AdminCreateMediaForm } from "@/components/admin/AdminCreateMediaForm";
 import { connectDB } from "@/lib/db";
 import type { MediaDoc } from "@/models/Media";
 import { Media } from "@/models/Media";
+import { AdminCard } from "@/components/admin/AdminCard";
+import { AdminEmptyState } from "@/components/admin/AdminEmptyState";
+import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 
 export const dynamic = "force-dynamic";
 
@@ -13,31 +16,53 @@ export default async function AdminMediaPage() {
 
   return (
     <div className="space-y-6">
+      <AdminSectionHeader title="Media" subtitle="Add and manage gallery images." icon="photo_library" />
       <AdminCreateMediaForm />
-      <section className="overflow-x-auto rounded-xl border border-outline-variant/50 bg-surface-container-lowest shadow-sm">
-        <table className="w-full min-w-[860px] border-collapse text-left text-sm">
-          <thead>
-            <tr className="border-b border-outline-variant/60 bg-surface-container-low font-label text-xs uppercase tracking-wider text-on-surface-variant">
-              <th className="px-4 py-3">Title</th>
-              <th className="px-4 py-3">Picture</th>
-              <th className="px-4 py-3">Description</th>
-            </tr>
-          </thead>
-          <tbody className="font-body">
-            {rows.map((r) => (
-              <tr key={String(r._id)} className="border-b border-outline-variant/40 align-top">
-                <td className="px-4 py-3 font-medium text-primary">{r.title}</td>
-                <td className="px-4 py-3">
-                  <a href={r.picture} className="text-secondary underline-offset-2 hover:underline" target="_blank" rel="noreferrer">
-                    Open
-                  </a>
-                </td>
-                <td className="max-w-[500px] px-4 py-3 text-on-surface-variant">{r.description}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
+
+      {rows.length === 0 ? (
+        <AdminEmptyState
+          title="No media items yet."
+          description="Upload a picture and description to populate this table."
+          icon="photo_library"
+        />
+      ) : (
+        <AdminCard className="p-0">
+          <div className="overflow-x-auto rounded-2xl">
+            <table className="w-full min-w-[860px] border-collapse border-spacing-0 text-left text-sm">
+              <thead>
+                <tr className="border-b border-outline-variant/60 bg-surface-container-low font-label text-xs uppercase tracking-wider text-on-surface-variant">
+                  <th scope="col" className="px-4 py-3">Title</th>
+                  <th scope="col" className="px-4 py-3">Picture</th>
+                  <th scope="col" className="px-4 py-3">Description</th>
+                </tr>
+              </thead>
+              <tbody className="font-body">
+                {rows.map((r, idx) => (
+                  <tr
+                    key={String(r._id)}
+                    className={`border-b border-outline-variant/40 align-top hover:bg-surface-container-low/80 ${
+                      idx % 2 === 0 ? "bg-surface-container-lowest/40" : "bg-surface-container-low/10"
+                    }`}
+                  >
+                    <td className="px-4 py-3 font-medium text-primary">{r.title}</td>
+                    <td className="px-4 py-3">
+                      <a
+                        href={r.picture}
+                        className="text-secondary underline-offset-2 hover:underline"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Open
+                      </a>
+                    </td>
+                    <td className="max-w-[500px] px-4 py-3 text-on-surface-variant">{r.description}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </AdminCard>
+      )}
     </div>
   );
 }
