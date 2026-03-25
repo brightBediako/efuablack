@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FooterLegal } from "@/components/FooterLegal";
+import { SiteFooter } from "@/components/SiteFooter";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { MaterialSymbol } from "@/components/MaterialSymbol";
 import { SiteNav } from "@/components/SiteNav";
@@ -22,9 +22,9 @@ export default async function ContactPage({
   return (
     <>
       <SiteNav shell="contact" active="contact" />
-      <main className="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+      <main className="mx-auto max-w-7xl px-4 pb-24 pt-28 sm:px-6 sm:pt-32 md:px-12">
         <header className="mb-16 text-center md:text-left">
-          <h1 className="text-6xl md:text-8xl font-serif italic text-primary tracking-tight leading-tight">
+          <h1 className="font-serif text-4xl italic leading-tight tracking-tight text-primary sm:text-5xl md:text-7xl lg:text-8xl">
             Contact
           </h1>
           <p className="mt-6 text-on-surface-variant max-w-2xl text-lg font-body font-light tracking-wide leading-relaxed">
@@ -95,15 +95,7 @@ export default async function ContactPage({
         </div>
       </main>
 
-      <footer className="bg-[#f7f2f8] dark:bg-[#1a0a25] w-full pt-20 pb-10 mt-16">
-        <div className="flex flex-col items-center justify-center gap-8 px-8 w-full">
-          <div className="font-serif text-xl italic text-[#320b44] dark:text-[#eedbff]">Efua Black Ministry</div>
-          <FooterLegal />
-          <div className="text-[#320b44] opacity-40 font-sans text-[10px] tracking-widest uppercase dark:text-[#eedbff]">
-            © 2024 Efua Black Ministry. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter className="mt-16" />
     </>
   );
 }

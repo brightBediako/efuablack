@@ -23,6 +23,9 @@ export function FooterLegal({ className }: Props) {
       <Link href="/contact?topic=media-kit" className={defaultLink}>
         Media Kit
       </Link>
+      <Link href="/admin/login" className={defaultLink}>
+        Admin
+      </Link>
     </div>
   );
 }

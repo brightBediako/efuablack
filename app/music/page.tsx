@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FooterLegal } from "@/components/FooterLegal";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SubscribeForm } from "@/components/forms/SubscribeForm";
 import { MaterialSymbol } from "@/components/MaterialSymbol";
 import { SiteNav } from "@/components/SiteNav";
@@ -54,9 +54,9 @@ export default function MusicPage() {
   return (
     <>
       <SiteNav shell="music" active="music" />
-      <main className="pt-32 pb-24 px-6 md:px-12 max-w-screen-2xl mx-auto">
-        <header className="mb-20">
-          <h1 className="font-headline text-8xl md:text-9xl italic font-light text-primary leading-none tracking-tighter -ml-1 md:-ml-4">
+      <main className="mx-auto max-w-screen-2xl px-4 pb-24 pt-28 sm:px-6 sm:pt-32 md:px-12">
+        <header className="mb-12 sm:mb-20">
+          <h1 className="font-headline text-5xl font-light italic leading-none tracking-tighter text-primary sm:text-7xl md:text-8xl lg:text-9xl md:-ml-2 lg:-ml-4">
             Music
           </h1>
           <p className="font-body text-lg text-on-surface-variant max-w-xl mt-6 uppercase tracking-widest opacity-80">
@@ -171,15 +171,7 @@ export default function MusicPage() {
         </section>
       </main>
 
-      <footer className="w-full pt-20 pb-10 bg-[#f7f2f8]">
-        <div className="flex flex-col items-center justify-center gap-8 px-8 w-full">
-          <div className="font-serif text-xl italic text-[#320b44]">Efua Black Ministry</div>
-          <FooterLegal />
-          <div className="font-sans text-sm tracking-widest uppercase text-[#320b44] opacity-40">
-            © 2024 Efua Black Ministry. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-2xl">
         <div className="bg-surface/80 backdrop-blur-2xl px-6 py-4 flex items-center gap-6 shadow-2xl border border-outline-variant/10 rounded-full">

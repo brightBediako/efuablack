@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FooterLegal } from "@/components/FooterLegal";
+import { SiteFooter } from "@/components/SiteFooter";
 import { MaterialSymbol } from "@/components/MaterialSymbol";
 import { SiteNav } from "@/components/SiteNav";
 import { defaultDescription } from "@/lib/site-config";
@@ -14,14 +14,14 @@ export default function EventsPage() {
   return (
     <>
       <SiteNav shell="events" active="events" />
-      <main className="pt-32 pb-24">
-        <header className="px-12 max-w-screen-2xl mx-auto mb-20">
+      <main className="px-4 pb-24 pt-28 sm:px-6 sm:pt-32 md:px-8">
+        <header className="mx-auto mb-12 max-w-screen-2xl sm:mb-20 md:px-4 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <span className="font-label text-sm uppercase tracking-[0.3em] text-secondary mb-4 block">
                 Upcoming Gatherings
               </span>
-              <h1 className="font-serif text-7xl md:text-9xl italic font-bold text-primary-container -ml-1">
+              <h1 className="font-serif text-4xl font-bold italic text-primary-container sm:text-6xl md:text-8xl lg:text-9xl">
                 Events
               </h1>
             </div>
@@ -208,15 +208,7 @@ export default function EventsPage() {
         </section>
       </main>
 
-      <footer className="w-full pt-20 pb-10 bg-[#f7f2f8] dark:bg-[#1a0a25]">
-        <div className="flex flex-col items-center justify-center gap-8 px-8 w-full">
-          <div className="font-serif text-3xl italic text-[#320b44] dark:text-[#eedbff]">Efua Black</div>
-          <FooterLegal />
-          <div className="mt-8 opacity-40 text-xs font-sans tracking-widest uppercase text-[#320b44] dark:text-[#eedbff]">
-            © 2024 Efua Black Ministry. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

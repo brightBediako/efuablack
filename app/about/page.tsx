@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FooterLegal } from "@/components/FooterLegal";
-import { MaterialSymbol } from "@/components/MaterialSymbol";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { defaultDescription } from "@/lib/site-config";
 
@@ -14,14 +13,14 @@ export default function AboutPage() {
   return (
     <>
       <SiteNav shell="about" active="about" />
-      <main className="pt-20">
-        <header className="relative min-h-[819px] flex items-center overflow-hidden px-8 md:px-24 py-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+      <main className="overflow-x-hidden pt-24 sm:pt-28">
+        <header className="relative flex min-h-[min(819px,140dvh)] items-center overflow-hidden px-4 py-12 sm:px-8 md:min-h-[819px] md:px-24 md:py-20">
+          <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-2 md:gap-12">
             <div className="z-10 relative">
               <span className="font-label text-secondary uppercase tracking-[0.3em] mb-4 block">
                 The Soul Behind the Sound
               </span>
-              <h1 className="text-6xl md:text-8xl font-serif italic text-primary leading-tight -ml-1">
+              <h1 className="font-serif text-4xl italic leading-tight text-primary sm:text-5xl md:text-7xl lg:text-8xl">
                 About Efua Black
               </h1>
               <p className="mt-8 text-lg md:text-xl text-on-surface-variant max-w-lg leading-relaxed font-body">
@@ -209,30 +208,7 @@ export default function AboutPage() {
         </section>
       </main>
 
-      <footer className="bg-[#f7f2f8] w-full pt-20 pb-10">
-        <div className="flex flex-col items-center justify-center gap-8 px-8 w-full max-w-screen-2xl mx-auto">
-          <div className="font-serif text-3xl italic text-[#320b44]">Efua Black</div>
-          <FooterLegal />
-          <div className="flex gap-6 mt-4">
-            <Link href="/music" className="text-[#320b44] opacity-60 hover:opacity-100 transition-opacity" aria-label="Music">
-              <MaterialSymbol name="music_note" />
-            </Link>
-            <Link href="/contact" className="text-[#320b44] opacity-60 hover:opacity-100 transition-opacity" aria-label="Contact">
-              <MaterialSymbol name="share" />
-            </Link>
-            <a
-              href="mailto:management@efuablack.com"
-              className="text-[#320b44] opacity-60 hover:opacity-100 transition-opacity"
-              aria-label="Email"
-            >
-              <MaterialSymbol name="mail" />
-            </a>
-          </div>
-          <div className="mt-8 text-[#320b44] opacity-60 font-sans text-xs tracking-widest">
-            © 2024 Efua Black Ministry. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FooterLegal } from "@/components/FooterLegal";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 
 export const metadata: Metadata = {
@@ -12,8 +12,8 @@ export default function PrivacyPage() {
   return (
     <>
       <SiteNav shell="booking" active="none" />
-      <main className="pt-32 pb-24 px-6 md:px-12 max-w-3xl mx-auto">
-        <h1 className="font-headline text-5xl italic text-primary mb-8">Privacy Policy</h1>
+      <main className="mx-auto max-w-3xl px-4 pb-24 pt-28 sm:px-6 sm:pt-32 md:px-12">
+        <h1 className="mb-8 font-headline text-3xl italic text-primary sm:text-4xl md:text-5xl">Privacy Policy</h1>
         <p className="text-on-surface-variant text-sm mb-10">Last updated: March 2026</p>
         <div className="space-y-6 text-on-surface-variant leading-relaxed">
           <p>
@@ -35,14 +35,7 @@ export default function PrivacyPage() {
           </p>
         </div>
       </main>
-      <footer className="bg-[#f7f2f8] w-full pt-16 pb-10">
-        <div className="flex flex-col items-center gap-6 px-8">
-          <FooterLegal />
-          <div className="font-sans text-xs tracking-widest uppercase text-[#320b44] opacity-40">
-            © 2024 Efua Black Ministry
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FooterLegal } from "@/components/FooterLegal";
+import { SiteFooter } from "@/components/SiteFooter";
 import { MaterialSymbol } from "@/components/MaterialSymbol";
 import { SiteNav } from "@/components/SiteNav";
 import { defaultDescription } from "@/lib/site-config";
@@ -14,8 +14,8 @@ export default function MinistryPage() {
   return (
     <>
       <SiteNav shell="ministry" active="ministry" />
-      <main className="pt-24">
-        <section className="relative h-[819px] flex items-center overflow-hidden">
+      <main className="overflow-x-hidden pt-24 sm:pt-28">
+        <section className="relative flex min-h-[min(819px,95dvh)] items-center overflow-hidden md:h-[819px] md:min-h-0">
           <div className="absolute inset-0 z-0">
             <img
               alt="Spiritual landscape"
@@ -24,8 +24,8 @@ export default function MinistryPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent" />
           </div>
-          <div className="relative z-10 px-12 max-w-4xl mx-auto md:mx-0 md:ml-24">
-            <h1 className="font-headline text-8xl md:text-9xl text-surface italic font-bold tracking-tighter -ml-4">
+          <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-8 md:mx-0 md:ml-24 md:px-12">
+            <h1 className="font-headline text-5xl font-bold italic tracking-tighter text-surface sm:text-6xl md:text-8xl lg:text-9xl md:-ml-2">
               Ministry
             </h1>
             <p className="mt-6 text-xl text-surface-variant font-light max-w-lg leading-relaxed">
@@ -260,38 +260,7 @@ export default function MinistryPage() {
         </section>
       </main>
 
-      <footer className="bg-[#f7f2f8] dark:bg-[#1a0a25] w-full pt-20 pb-10">
-        <div className="flex flex-col items-center justify-center gap-8 px-8 w-full max-w-screen-2xl mx-auto">
-          <div className="font-serif text-3xl italic text-[#320b44] dark:text-[#eedbff]">Efua Black Ministry</div>
-          <FooterLegal />
-          <div className="flex gap-6 mt-4">
-            <Link
-              href="/contact"
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-surface text-primary hover:text-secondary transition-colors shadow-sm"
-              aria-label="Share"
-            >
-              <span className="material-symbols-outlined text-lg">share</span>
-            </Link>
-            <a
-              href="mailto:management@efuablack.com"
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-surface text-primary hover:text-secondary transition-colors shadow-sm"
-              aria-label="Email"
-            >
-              <span className="material-symbols-outlined text-lg">mail</span>
-            </a>
-            <Link
-              href="/contact"
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-surface text-primary hover:text-secondary transition-colors shadow-sm"
-              aria-label="Updates"
-            >
-              <span className="material-symbols-outlined text-lg">rss_feed</span>
-            </Link>
-          </div>
-          <p className="font-sans text-xs tracking-widest uppercase text-[#320b44] opacity-40 mt-8 dark:text-[#eedbff]">
-            © 2024 Efua Black Ministry. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

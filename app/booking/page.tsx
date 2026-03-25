@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FooterLegal } from "@/components/FooterLegal";
+import { SiteFooter } from "@/components/SiteFooter";
 import { BookingForm } from "@/components/forms/BookingForm";
 import { MaterialSymbol } from "@/components/MaterialSymbol";
 import { SiteNav } from "@/components/SiteNav";
@@ -15,9 +15,9 @@ export default function BookingPage() {
   return (
     <>
       <SiteNav shell="booking" active="booking" />
-      <main className="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
-        <header className="mb-20 text-center md:text-left">
-          <h1 className="text-6xl md:text-8xl font-serif italic text-primary tracking-tight leading-tight">
+      <main className="mx-auto max-w-7xl px-4 pb-24 pt-28 sm:px-6 sm:pt-32 md:px-12">
+        <header className="mb-12 text-center md:mb-20 md:text-left">
+          <h1 className="font-serif text-4xl italic leading-tight tracking-tight text-primary sm:text-5xl md:text-7xl lg:text-8xl">
             Book Efua Black
           </h1>
           <p className="mt-6 text-on-surface-variant max-w-2xl text-lg font-body font-light tracking-wide leading-relaxed">
@@ -25,18 +25,18 @@ export default function BookingPage() {
             engagement, we seek to create an atmosphere of divine connection.
           </p>
         </header>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
-          <section className="lg:col-span-8 bg-surface-container-low rounded-xl p-8 md:p-12 shadow-sm">
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-20">
+          <section className="rounded-xl bg-surface-container-low p-6 shadow-sm sm:p-8 md:p-12 lg:col-span-8">
             <BookingForm />
           </section>
           <aside className="lg:col-span-4 space-y-12">
-            <div className="relative overflow-visible group">
+            <div className="group relative overflow-visible">
               <img
                 alt="Efua Black performing"
-                className="w-full aspect-[4/5] object-cover rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+                className="aspect-[4/5] w-full rounded-lg object-cover shadow-2xl grayscale transition-all duration-700 hover:grayscale-0"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuD888_MdovlAKFmRUYwcErgMxtV6RUm1TUHRDuMORn9mFzG8LS-RJrnLRZHIWoMq2IZXOR2xCa58SA8pPPUA46A3XTZ-hhFjMYdkrL-rUQQaf-YWi8Wrpz-HUlTT0Sf8mMsSW30bs3HCPnsffUQ3ykTatrAAdvy0Ock4sK9QlFu3VqNSdmsg_5sjrX3e3WVQh01R7F_WeFZKgTIQB57Tpm7yTmCyYUTyetPg_CkPvuJ76jPNpjYcT25PnK-WF5RoCp52SVAEeUm4mI"
               />
-              <div className="absolute -bottom-6 -right-6 p-6 bg-secondary-container text-on-secondary-container rounded-lg shadow-xl max-w-[200px]">
+              <div className="relative mt-4 max-w-[220px] rounded-lg bg-secondary-container p-5 text-on-secondary-container shadow-xl sm:absolute sm:-bottom-6 sm:-right-6 sm:mt-0 sm:max-w-[200px] sm:p-6">
                 <p className="font-serif italic text-lg leading-snug">
                   &quot;Music is the bridge between the human and the divine.&quot;
                 </p>
@@ -79,15 +79,7 @@ export default function BookingPage() {
         </div>
       </main>
 
-      <footer className="bg-[#f7f2f8] dark:bg-[#1a0a25] w-full pt-20 pb-10">
-        <div className="flex flex-col items-center justify-center gap-8 px-8 w-full">
-          <div className="font-serif text-xl italic text-[#320b44] dark:text-[#eedbff]">Efua Black Ministry</div>
-          <FooterLegal />
-          <div className="text-[#320b44] opacity-40 font-sans text-[10px] tracking-widest uppercase dark:text-[#eedbff]">
-            © 2024 Efua Black Ministry. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

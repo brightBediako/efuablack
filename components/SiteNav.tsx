@@ -29,15 +29,15 @@ export type NavShell =
   | "song";
 
 const shellClass: Record<NavShell, string> = {
-  home: "fixed top-0 w-full z-50 bg-[#fdf8fd]/70 dark:bg-[#0f0019]/70 backdrop-blur-xl",
-  about: "fixed top-0 w-full z-50 bg-[#fdf8fd]/70 backdrop-blur-xl",
-  music: "fixed top-0 w-full z-50 bg-[#fdf8fd]/70 backdrop-blur-xl",
-  ministry: "fixed top-0 w-full z-50 glass-nav",
-  events: "fixed top-0 w-full z-50 bg-[#fdf8fd]/70 dark:bg-[#0f0019]/70 backdrop-blur-xl",
-  media: "fixed top-0 w-full z-50 bg-[#fdf8fd]/70 dark:bg-[#0f0019]/70 backdrop-blur-xl",
-  booking: "fixed top-0 w-full z-50 bg-[#fdf8fd]/70 dark:bg-[#0f0019]/70 backdrop-blur-xl",
-  contact: "fixed top-0 w-full z-50 bg-[#fdf8fd]/70 dark:bg-[#0f0019]/70 backdrop-blur-xl",
-  song: "fixed top-0 w-full z-50 bg-[#fdf8fd]/70 backdrop-blur-xl",
+  home: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl dark:bg-[#0f0019]/80",
+  about: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl",
+  music: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl",
+  ministry: "fixed top-0 z-50 flex w-full flex-col items-stretch glass-nav",
+  events: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl dark:bg-[#0f0019]/80",
+  media: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl dark:bg-[#0f0019]/80",
+  booking: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl dark:bg-[#0f0019]/80",
+  contact: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl dark:bg-[#0f0019]/80",
+  song: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl",
 };
 
 function lightLinks(shell: NavShell) {
@@ -59,8 +59,8 @@ function linkActiveClass(shell: NavShell) {
 
 function logoClass(shell: NavShell) {
   return lightLinks(shell)
-    ? "text-2xl font-serif font-bold text-[#320b44] tracking-tighter"
-    : "text-2xl font-serif font-bold text-[#320b44] dark:text-[#eedbff] tracking-tighter";
+    ? "text-xl font-serif font-bold text-[#320b44] tracking-tighter sm:text-2xl"
+    : "text-xl font-serif font-bold text-[#320b44] dark:text-[#eedbff] tracking-tighter sm:text-2xl";
 }
 
 const NAV: { href: string; key: NavKey; label: string }[] = [
@@ -91,12 +91,12 @@ export function SiteNav({ shell, active }: Props) {
   }, [mobileOpen]);
 
   return (
-    <nav className={navClass}>
-      <div className="flex justify-between items-center px-6 sm:px-12 py-6 max-w-screen-2xl mx-auto">
+    <nav className={navClass} aria-label="Main">
+      <div className="mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-4 sm:px-8 sm:py-5 md:px-12">
         <Link href="/" className={logoClass(shell)} onClick={() => setMobileOpen(false)}>
           Efua Black
         </Link>
-        <div className="hidden lg:flex gap-6 xl:gap-8 items-center flex-wrap justify-end">
+        <div className="hidden flex-wrap items-center justify-end gap-6 lg:flex xl:gap-8">
           {NAV.map((item) => {
             const isActive =
               active !== "none" &&
@@ -112,12 +112,12 @@ export function SiteNav({ shell, active }: Props) {
             );
           })}
         </div>
-        <div className="flex items-center gap-3 lg:gap-4">
+        <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
           <span
             className={
               lightLinks(shell)
-                ? "material-symbols-outlined text-[#320b44] cursor-pointer hover:text-[#775a19] transition-transform text-2xl"
-                : "material-symbols-outlined text-[#320b44] dark:text-[#eedbff] cursor-pointer hover:text-[#775a19] transition-transform text-2xl"
+                ? "material-symbols-outlined cursor-default text-2xl text-[#320b44] sm:text-[1.75rem]"
+                : "material-symbols-outlined cursor-default text-2xl text-[#320b44] dark:text-[#eedbff] sm:text-[1.75rem]"
             }
             aria-hidden
           >
@@ -125,35 +125,51 @@ export function SiteNav({ shell, active }: Props) {
           </span>
           <button
             type="button"
-            className="lg:hidden text-[#320b44] dark:text-[#eedbff] p-1"
+            className="rounded-md p-2 text-[#320b44] dark:text-[#eedbff] lg:hidden"
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav"
             onClick={() => setMobileOpen((o) => !o)}
           >
-            {mobileOpen ? <MaterialSymbol name="close" className="text-2xl" /> : <MaterialSymbol name="menu" className="text-2xl" />}
+            {mobileOpen ? (
+              <MaterialSymbol name="close" className="text-2xl" />
+            ) : (
+              <MaterialSymbol name="menu" className="text-2xl" />
+            )}
           </button>
         </div>
       </div>
 
       {mobileOpen ? (
-        <div className="lg:hidden fixed inset-0 top-[72px] z-[60] bg-surface/98 backdrop-blur-xl border-t border-outline-variant/20 px-6 py-8 flex flex-col gap-1 overflow-y-auto" id="mobile-nav">
-          {NAV.map((item) => {
-            const isActive =
-              active !== "none" &&
-              (active === item.key || (item.key === "music" && active === "song"));
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`py-3 font-serif text-xl italic border-b border-outline-variant/20 ${
-                  isActive ? "text-[#775a19] font-bold" : "text-[#320b44] dark:text-[#eedbff]"
-                }`}
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+        <div
+          id="mobile-nav"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
+          className="lg:hidden w-full max-h-[min(85dvh,calc(100dvh-5rem))] overflow-y-auto overscroll-y-contain border-t border-outline-variant/25 bg-[#fdf8fd] dark:bg-[#1a0a25] shadow-inner [text-rendering:optimizeLegibility]"
+        >
+          <ul className="mx-auto flex w-full max-w-screen-2xl list-none flex-col px-2 py-3 sm:px-4">
+            {NAV.map((item) => {
+              const isActive =
+                active !== "none" &&
+                (active === item.key || (item.key === "music" && active === "song"));
+              return (
+                <li key={item.href} className="border-b border-outline-variant/20 last:border-0">
+                  <Link
+                    href={item.href}
+                    prefetch={false}
+                    className={`block rounded-lg px-3 py-3.5 text-base font-body font-medium antialiased transition-colors sm:py-4 sm:text-lg ${
+                      isActive
+                        ? "bg-secondary/10 text-secondary dark:text-secondary-fixed"
+                        : "text-[#320b44] dark:text-[#eedbff] active:bg-surface-container-high"
+                    }`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       ) : null}
     </nav>

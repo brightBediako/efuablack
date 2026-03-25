@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FooterLegal } from "@/components/FooterLegal";
+import { SiteFooter } from "@/components/SiteFooter";
 import { MaterialSymbol } from "@/components/MaterialSymbol";
 import { SiteNav } from "@/components/SiteNav";
 import { defaultDescription } from "@/lib/site-config";
@@ -24,8 +24,8 @@ export default async function SongPage({ params }: Props) {
   return (
     <>
       <SiteNav shell="song" active="music" />
-      <main className="pt-24">
-        <section className="relative w-full h-[716px] flex items-center justify-center overflow-hidden">
+      <main className="overflow-x-hidden pt-24 sm:pt-28">
+        <section className="relative flex min-h-[min(716px,90dvh)] w-full items-center justify-center overflow-hidden md:h-[716px] md:min-h-0">
           <div className="absolute inset-0 bg-primary z-0">
             <img
               alt="Efua Black performing passionately on stage with soft purple spotlight and ethereal atmospheric smoke behind her"
@@ -38,7 +38,7 @@ export default async function SongPage({ params }: Props) {
             <span className="font-label text-sm uppercase tracking-[0.3em] text-secondary mb-4 block">
               New Release
             </span>
-            <h1 className="text-7xl md:text-9xl font-headline italic font-bold text-on-primary-fixed mb-6 tracking-tight">
+            <h1 className="mb-6 font-headline text-5xl font-bold italic tracking-tight text-on-primary-fixed sm:text-6xl md:text-8xl lg:text-9xl">
               Testify
             </h1>
             <p className="text-xl md:text-2xl font-headline italic text-on-surface-variant max-w-2xl mx-auto opacity-90">
@@ -48,7 +48,7 @@ export default async function SongPage({ params }: Props) {
           </div>
         </section>
 
-        <div className="max-w-screen-xl mx-auto px-6 md:px-12 -mt-24 relative z-20 pb-32">
+        <div className="relative z-20 mx-auto -mt-16 max-w-screen-xl px-4 pb-24 sm:-mt-20 sm:px-6 md:-mt-24 md:px-12 md:pb-32">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-7 space-y-12">
               <div className="aspect-video bg-surface-container-lowest rounded-xl shadow-2xl overflow-hidden group relative">
@@ -267,26 +267,7 @@ export default async function SongPage({ params }: Props) {
         </section>
       </main>
 
-      <footer className="bg-[#f7f2f8] w-full pt-20 pb-10">
-        <div className="flex flex-col items-center justify-center gap-8 px-8 w-full">
-          <span className="font-serif text-xl italic text-[#320b44]">Efua Black Ministry</span>
-          <FooterLegal />
-          <div className="flex gap-6 mt-4">
-            <span className="material-symbols-outlined text-[#320b44] opacity-60 hover:opacity-100 transition-all cursor-pointer">
-              social_leaderboard
-            </span>
-            <span className="material-symbols-outlined text-[#320b44] opacity-60 hover:opacity-100 transition-all cursor-pointer">
-              public
-            </span>
-            <span className="material-symbols-outlined text-[#320b44] opacity-60 hover:opacity-100 transition-all cursor-pointer">
-              podcasts
-            </span>
-          </div>
-          <p className="font-sans text-xs tracking-widest uppercase text-[#320b44] opacity-40 mt-8">
-            © 2024 Efua Black Ministry. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

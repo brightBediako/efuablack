@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { FooterLegal } from "@/components/FooterLegal";
+import { SiteFooter } from "@/components/SiteFooter";
 import { MediaGalleryClient } from "@/components/MediaGalleryClient";
 import { SiteNav } from "@/components/SiteNav";
 import { defaultDescription } from "@/lib/site-config";
@@ -13,9 +13,9 @@ export default function MediaPage() {
   return (
     <>
       <SiteNav shell="media" active="media" />
-      <main className="pt-32 pb-24">
-        <header className="max-w-screen-2xl mx-auto px-12 mb-20 text-center md:text-left">
-          <h1 className="font-headline text-6xl md:text-8xl italic text-primary leading-tight mb-4 tracking-tighter">
+      <main className="px-4 pb-24 pt-28 sm:px-6 sm:pt-32">
+        <header className="mx-auto mb-12 max-w-screen-2xl text-center sm:mb-20 md:px-4 md:text-left lg:px-12">
+          <h1 className="font-headline text-4xl italic leading-tight tracking-tighter text-primary sm:text-5xl md:text-7xl lg:text-8xl mb-4">
             The Gallery of <span className="text-secondary">Grace</span>
           </h1>
           <p className="font-body text-on-surface-variant text-lg max-w-2xl leading-relaxed">
@@ -24,7 +24,7 @@ export default function MediaPage() {
           </p>
         </header>
 
-        <div className="max-w-screen-2xl mx-auto px-12 mb-12 flex flex-wrap gap-4 items-center">
+        <div className="mx-auto mb-12 flex max-w-screen-2xl flex-wrap items-center gap-4 px-4 sm:px-6 lg:px-12">
           <button
             type="button"
             className="bg-primary text-on-primary px-8 py-3 rounded-full font-label text-sm tracking-widest uppercase transition-all hover:opacity-90"
@@ -54,15 +54,7 @@ export default function MediaPage() {
         <MediaGalleryClient />
       </main>
 
-      <footer className="bg-[#f7f2f8] dark:bg-[#1a0a25] w-full pt-20 pb-10">
-        <div className="flex flex-col items-center justify-center gap-8 px-8 w-full">
-          <div className="font-serif text-xl italic text-[#320b44] dark:text-[#eedbff]">Efua Black Ministry</div>
-          <FooterLegal />
-          <p className="text-[#320b44] opacity-40 text-[10px] tracking-widest uppercase mt-4 dark:text-[#eedbff]">
-            © 2024 Efua Black Ministry. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

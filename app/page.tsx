@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FooterLegal } from "@/components/FooterLegal";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SubscribeForm } from "@/components/forms/SubscribeForm";
 import { MaterialSymbol } from "@/components/MaterialSymbol";
 import { SiteNav } from "@/components/SiteNav";
@@ -29,7 +29,7 @@ export default function HomePage() {
             <span className="font-label text-secondary-fixed-dim tracking-[0.3em] uppercase mb-6 block">
               New Release
             </span>
-            <h1 className="font-headline text-7xl md:text-9xl text-on-primary italic font-bold mb-12 leading-tight">
+            <h1 className="font-headline text-5xl text-on-primary italic font-bold mb-8 leading-tight sm:mb-12 sm:text-7xl md:text-9xl">
               Testify
             </h1>
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
@@ -50,7 +50,7 @@ export default function HomePage() {
         </section>
 
         <section className="py-24 bg-surface-container-low">
-          <div className="max-w-screen-xl mx-auto px-6">
+          <div className="mx-auto max-w-screen-xl px-4 sm:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end mb-16">
               <div className="lg:col-span-8">
                 <h2 className="font-headline text-5xl md:text-6xl text-primary leading-none mb-4">
@@ -83,7 +83,7 @@ export default function HomePage() {
         </section>
 
         <section className="py-24 bg-surface overflow-hidden">
-          <div className="max-w-screen-xl mx-auto px-6">
+          <div className="mx-auto max-w-screen-xl px-4 sm:px-6">
             <div className="flex flex-col md:flex-row items-center gap-20">
               <div className="md:w-1/2 relative">
                 <div className="absolute -top-10 -left-10 w-64 h-64 bg-tertiary-fixed rounded-full blur-3xl opacity-30 -z-10" />
@@ -94,7 +94,7 @@ export default function HomePage() {
                 />
               </div>
               <div className="md:w-1/2">
-                <h2 className="font-headline text-5xl text-primary italic mb-8 -ml-12 md:-ml-24 relative z-20 bg-surface/80 backdrop-blur-sm p-4 inline-block">
+                <h2 className="relative z-20 mb-8 inline-block bg-surface/90 p-4 font-headline text-4xl italic text-primary backdrop-blur-sm sm:text-5xl md:-ml-12 md:backdrop-blur-sm lg:-ml-24">
                   The Voice Behind the Worship
                 </h2>
                 <div className="space-y-6 text-on-surface-variant leading-relaxed text-lg">
@@ -124,7 +124,7 @@ export default function HomePage() {
         </section>
 
         <section className="py-24 bg-surface-container-low">
-          <div className="max-w-screen-xl mx-auto px-6">
+          <div className="mx-auto max-w-screen-xl px-4 sm:px-6">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
               <h2 className="font-headline text-5xl text-primary">Sacred Discography</h2>
               <p className="font-label text-secondary uppercase tracking-[0.2em]">Latest Tracks</p>
@@ -193,7 +193,7 @@ export default function HomePage() {
         </section>
 
         <section className="py-24 bg-surface">
-          <div className="max-w-screen-xl mx-auto px-6">
+          <div className="mx-auto max-w-screen-xl px-4 sm:px-6">
             <div className="text-center mb-20">
               <h2 className="font-headline text-6xl text-primary mb-4 italic">The Invitation</h2>
               <p className="font-body text-on-surface-variant max-w-lg mx-auto uppercase tracking-widest text-sm">
@@ -265,29 +265,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="bg-[#f7f2f8] dark:bg-[#1a0a25] w-full pt-20 pb-10">
-        <div className="flex flex-col items-center justify-center gap-8 px-8 w-full">
-          <div className="font-serif text-3xl italic text-[#320b44] dark:text-[#eedbff]">Efua Black</div>
-          <FooterLegal />
-          <div className="flex gap-6 mt-4">
-            <MaterialSymbol
-              name="music_note"
-              className="text-[#320b44] dark:text-[#eedbff] cursor-pointer hover:text-secondary transition-colors"
-            />
-            <MaterialSymbol
-              name="videocam"
-              className="text-[#320b44] dark:text-[#eedbff] cursor-pointer hover:text-secondary transition-colors"
-            />
-            <MaterialSymbol
-              name="share"
-              className="text-[#320b44] dark:text-[#eedbff] cursor-pointer hover:text-secondary transition-colors"
-            />
-          </div>
-          <p className="font-sans text-xs tracking-widest uppercase opacity-40 mt-8 text-[#320b44] dark:text-[#eedbff]">
-            © 2024 Efua Black Ministry. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
