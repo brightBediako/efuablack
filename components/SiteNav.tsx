@@ -96,7 +96,7 @@ export function SiteNav({ shell, active }: Props) {
         <Link href="/" className={logoClass(shell)} onClick={() => setMobileOpen(false)}>
           Efua Black
         </Link>
-        <div className="hidden flex-wrap items-center justify-end gap-6 lg:flex xl:gap-8">
+        <div className="hidden flex-1 flex-wrap items-center justify-center gap-6 pl-8 lg:flex xl:gap-8">
           {NAV.map((item) => {
             const isActive =
               active !== "none" &&
@@ -112,17 +112,7 @@ export function SiteNav({ shell, active }: Props) {
             );
           })}
         </div>
-        <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
-          <span
-            className={
-              lightLinks(shell)
-                ? "material-symbols-outlined cursor-default text-2xl text-[#320b44] sm:text-[1.75rem]"
-                : "material-symbols-outlined cursor-default text-2xl text-[#320b44] dark:text-[#eedbff] sm:text-[1.75rem]"
-            }
-            aria-hidden
-          >
-            account_circle
-          </span>
+        <div className="flex items-center">
           <button
             type="button"
             className="rounded-md p-2 text-[#320b44] dark:text-[#eedbff] lg:hidden"

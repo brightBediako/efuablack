@@ -30,24 +30,6 @@ const songs = [
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAl-u2cqzyhmDWBaNYGG6SAh5w3PFq17Ij1_7sr2H2AsHeZoXEGUBdLFkx3Vqq-srm8fYOPY7p5dv5MQJLRLeppW9Y9Qb0VcsaUgXBaxKT8jcfMZTcSaDNwpzpyn3CK4tWdtA6mSNmgc1JKN8Wtdm0EzM_339oV5Tn3D4ylpF_ojTklGS3QKMmO3iG0UYBpCeJh7AWLZ1j0NhiGj6Rup5UvILb6HHYtgM6XbuH1Vs8O08--Bq3VHgyMmVhKZ5Oe63Skz5MSiud9QYQ",
     alt: "Atmospheric cover art featuring a dark starry sky reflecting in a still lake with a subtle purple horizon glow",
   },
-  {
-    title: "Sovereign",
-    year: "2021",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD9fhb5PrN0bqdcLY5dGaCj7ycrjzcI907Nq0F_4QTxhnYY7J2xf74OmyCUg9MM9vNwl_dvY1H6nRvK9Cg0L7eXnDzx9TGV8Bgd3nwoRb7KjmYDcKymyolmaUC2gChDnqp_zOWRLc8ljNzg46VGm_zIoUU5TvWfnIpZEHyu28WjKotp3IGEOa8F_6kSHxbxjFnVfgij0xCIUUwN4ES-CsTQmHXYGTkeFNPaGVXwWc5uPnysU5xS9GBiibG9CoPDAVXvFuQoYrSn9S0",
-    alt: "Ethereal image of clouds at twilight illuminated by an unseen celestial source with deep indigo and soft magenta tones",
-  },
-  {
-    title: "Higher Ground",
-    year: "2020",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCaFJTYt6VcRFd-CzcpEeg0-0aOwNU8kiCRUqUCFtcR33Tp_bgMIM1xD28yEzief1VzwhQTOvCQMRLeywbxBEOJ13MTd_xUVMph9-rcGDv58lnzXmQ-Zd0236x9s6wmn9CURD_s3fsrTQmz9_NxPO11Mx1BZfIQKDESAJpRAPNCHAJ_TNVmoBUMn7g6_7DLYTQVc8dckHbMGsADt5wZinrcm_LykhHP3nSC7VUziBfdMI5j8ZX5Ew4Iv5UQF8o6uC6BM7fk0RBqsAw",
-    alt: "Landscape shot of misty mountain peaks at dawn with a soft golden sun beginning to break through the fog",
-  },
-  {
-    title: "Echoes of Joy",
-    year: "2019",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA1Wm_p9vefKi0QNmx66H-UUP8Hisq7VwbUxjDooLhQVmQMm27WDNlJ-pB8tnBNYMPmV9-vbBRemgGvOvBZ0oja9-Gngf5gg5irw9sNwqKil7KJ1Tuww5u7g52CSgPW6xuqlako-6V3FyqbeEweqZp_yXVTi03eOWOPzl14XyanBV3dycXDRAJ1o4jz-fEvt5VykZM9L-Xfug4ba0AZp9dwJo_aF_Sb2pdxZ1FUYcVJhu2yJVDC0l0Jz51y4NLoRj9VgS6xSUa6dP0",
-    alt: "Close up of piano keys with a soft warm focus and floating golden particles like tiny embers or sparks of light",
-  },
 ];
 
 export default function MusicPage() {

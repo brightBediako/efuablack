@@ -50,3 +50,15 @@ export function getAdminSessionSecret(): string {
     ""
   );
 }
+
+export function getCloudinaryConfig(): {
+  cloudName: string;
+  apiKey: string;
+  apiSecret: string;
+} {
+  return {
+    cloudName: process.env.CLOUDINARY_CLOUD_NAME?.trim() ?? "",
+    apiKey: process.env.CLOUDINARY_API_KEY?.trim() ?? "",
+    apiSecret: process.env.CLOUDINARY_API_SECRET?.trim() ?? "",
+  };
+}
