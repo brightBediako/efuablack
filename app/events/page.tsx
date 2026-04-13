@@ -27,8 +27,9 @@ export default function EventsPage() {
             </div>
             <div className="max-w-md">
               <p className="font-body text-lg text-on-surface-variant leading-relaxed">
-                Join us in atmosphere of worship and divine encounter. Every gathering is an intentional
-                space for the soul to find its melody.
+                Join us in atmosphere of worship and divine encounter. Every
+                gathering is an intentional space for the soul to find its
+                melody.
               </p>
             </div>
           </div>
@@ -47,27 +48,34 @@ export default function EventsPage() {
             <div className="relative z-10 p-12 md:p-24 max-w-3xl">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary-container text-on-secondary-container rounded-full mb-8">
                 <MaterialSymbol name="star" className="text-sm" filled />
-                <span className="font-label text-xs font-bold uppercase tracking-widest">Featured Event</span>
+                <span className="font-label text-xs font-bold uppercase tracking-widest">
+                  Featured Event
+                </span>
               </div>
               <h2 className="font-serif text-5xl md:text-7xl font-bold text-primary mb-6 leading-tight">
-                The Midnight Cry: Global Worship Night
+                Holy Ghost Experience
               </h2>
               <p className="font-body text-xl text-on-surface-variant mb-10 leading-relaxed">
-                A dedicated night of intercession and prophetic worship. Join Efua Black and the ministry
-                team for an unforgettable encounter with the Divine.
+                A dedicated night of intercession and prophetic worship. Join
+                Efua Black and the ministry team for an unforgettable encounter
+                with the Divine.
               </p>
               <div className="flex flex-wrap gap-12 mb-12">
                 <div>
                   <span className="block font-label text-xs uppercase tracking-widest text-outline mb-1">
                     Date
                   </span>
-                  <span className="font-serif text-2xl italic text-primary">December 24, 2024</span>
+                  <span className="font-serif text-2xl italic text-primary">
+                    April 26, 2026
+                  </span>
                 </div>
                 <div>
                   <span className="block font-label text-xs uppercase tracking-widest text-outline mb-1">
                     Venue
                   </span>
-                  <span className="font-serif text-2xl italic text-primary">The Cathedral of Grace</span>
+                  <span className="font-serif text-2xl italic text-primary">
+                    Word of Life, Assemblies of God - Anaji Takoradi
+                  </span>
                 </div>
               </div>
               <button
@@ -81,7 +89,7 @@ export default function EventsPage() {
           </div>
         </section>
 
-        <section className="px-12 max-w-screen-2xl mx-auto mb-32">
+        {/* <section className="px-12 max-w-screen-2xl mx-auto mb-32">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="md:col-span-2 bg-surface-container-high p-10 rounded-xl flex flex-col justify-between min-h-[400px]">
               <div>
@@ -104,6 +112,7 @@ export default function EventsPage() {
                   seating available for this spiritual journey.
                 </p>
               </div>
+
               <div className="pt-8">
                 <a className="text-secondary font-label font-bold uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all" href="#">
                   View Details <MaterialSymbol name="chevron_right" />
@@ -129,66 +138,23 @@ export default function EventsPage() {
                 </a>
               </div>
             </div>
-            <div className="bg-surface-container-lowest p-10 rounded-xl flex flex-col justify-between shadow-sm">
-              <div>
-                <div className="mb-8">
-                  <span className="font-serif text-5xl italic font-bold text-primary-container">12</span>
-                  <span className="block font-label text-sm uppercase tracking-widest text-on-surface-variant">
-                    Jan 2025
-                  </span>
-                </div>
-                <h3 className="font-serif text-3xl font-bold text-primary mb-4">New Year Revival Gathering</h3>
-                <p className="font-body text-on-surface-variant">
-                  Starting the year with consecration. A morning of deep spiritual alignment and community
-                  prayer.
-                </p>
-              </div>
-              <div className="pt-8">
-                <a className="text-secondary font-label font-bold uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all" href="#">
-                  Learn More <MaterialSymbol name="chevron_right" />
-                </a>
-              </div>
-            </div>
-            <div className="md:col-span-2 relative bg-primary text-on-primary rounded-xl overflow-hidden flex flex-col md:flex-row min-h-[400px]">
-              <div className="p-10 flex flex-col justify-between flex-1 relative z-10">
-                <div>
-                  <div className="mb-8">
-                    <span className="font-serif text-5xl italic font-bold text-tertiary-fixed">20</span>
-                    <span className="block font-label text-sm uppercase tracking-widest opacity-60">Feb 2025</span>
-                  </div>
-                  <h3 className="font-serif text-4xl font-bold mb-4">Lagos Gospel Fest</h3>
-                  <p className="opacity-80 max-w-sm">
-                    Returning home for the largest gospel gathering in West Africa. A celebration of faith
-                    and African heritage.
-                  </p>
-                </div>
-                <div className="pt-8">
-                  <a className="text-secondary-fixed font-label font-bold uppercase tracking-widest flex items-center gap-2" href="#">
-                    Event Map <MaterialSymbol name="location_on" />
-                  </a>
-                </div>
-              </div>
-              <div className="w-full md:w-1/2 min-h-[250px] relative">
-                <img
-                  alt="Map Location"
-                  className="w-full h-full object-cover opacity-60 grayscale"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCM1vX4SANBy23RNGRFlo4_wnjauOLSG8uCGkg5I25wKtUf0lexZS69hqXDCBsDwrlQTMo6a_SRiPQm7FfGqOSPP2v40F8sDiE0oqCdg5aea0NwICqNcOXn9YYpMWSYRF9LAK5ONOI2bHVywieS3KjEMag82jNcYtkRFogbHB5J_T-wzICtOQ9v_YJgHVxeT-hxOJuSAabE2PgGgSjLNhwH07LxQJOCPS0kO43USl9QFvNUwWUOmOk74ze9re9aazOv2Wpfc1zz6c"
-                />
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent to-primary" />
-              </div>
-            </div>
+            
           </div>
-        </section>
+        </section> */}
 
         <section className="px-12 max-w-screen-2xl mx-auto">
           <div className="bg-tertiary-fixed p-16 md:p-24 rounded-xl text-center flex flex-col items-center">
-            <MaterialSymbol name="auto_awesome" className="text-6xl text-primary mb-8" filled />
+            <MaterialSymbol
+              name="auto_awesome"
+              className="text-6xl text-primary mb-8"
+              filled
+            />
             <h2 className="font-serif text-5xl md:text-7xl font-bold text-primary mb-8 italic">
               Invite Efua to Minister
             </h2>
             <p className="font-body text-xl text-on-tertiary-fixed-variant max-w-2xl mb-12 leading-relaxed">
-              Bring the atmosphere of heaven to your city, church, or event. We are currently reviewing
-              invitations for the 2025 Ministry Season.
+              Bring the atmosphere of heaven to your city, church, or event. We
+              are currently reviewing invitations for the 2025 Ministry Season.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <Link

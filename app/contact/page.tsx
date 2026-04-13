@@ -28,14 +28,17 @@ export default async function ContactPage({
             Contact
           </h1>
           <p className="mt-6 text-on-surface-variant max-w-2xl text-lg font-body font-light tracking-wide leading-relaxed">
-            For ministry invitations, collaboration, press, or general questions — we&apos;d love to hear from
-            you.
+            For ministry invitations, collaboration, press, or general questions
+            — we&apos;d love to hear from you.
           </p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <section className="lg:col-span-7 bg-surface-container-low rounded-xl p-8 md:p-12 shadow-sm">
-            <ContactForm key={defaultSubject || "default"} defaultSubject={defaultSubject} />
+            <ContactForm
+              key={defaultSubject || "default"}
+              defaultSubject={defaultSubject}
+            />
           </section>
           <aside className="lg:col-span-5 space-y-10">
             <div className="p-8 bg-tertiary-fixed rounded-xl border-l-4 border-secondary">
@@ -47,47 +50,85 @@ export default async function ContactPage({
                   <span className="font-label text-xs uppercase tracking-widest text-on-tertiary-fixed-variant">
                     Email
                   </span>
-                  <Link href="mailto:management@efuablack.com" className="font-bold block hover:underline">
-                    management@efuablack.com
+                  <Link
+                    href="mailto:management@efuablack.com"
+                    className="font-bold block hover:underline"
+                  >
+                    efuablack@gmail.com
                   </Link>
                 </span>
                 <span className="block pt-2">
                   <span className="font-label text-xs uppercase tracking-widest text-on-tertiary-fixed-variant">
                     Phone
                   </span>
-                  <span className="font-bold block">+1 (555) EFUA-ART</span>
+                  <span className="font-bold block">+233 532 702 003</span>
                 </span>
               </p>
             </div>
             <div>
-              <h2 className="font-serif text-2xl text-primary italic mb-4">Social</h2>
+              <h2 className="font-serif text-2xl text-primary italic mb-4">
+                Social
+              </h2>
               <div className="flex gap-4">
                 <a
-                  href="https://www.youtube.com"
+                  href="https://www.youtube.com/@EfuaBlack"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors"
                   aria-label="YouTube"
                 >
-                  <MaterialSymbol name="play_circle" className="text-secondary" />
+                  <MaterialSymbol
+                    name="play_circle"
+                    className="text-secondary"
+                  />
                 </a>
                 <a
-                  href="https://open.spotify.com"
+                  href="https://web.facebook.com/efuaBLACKK?_rdc=1&_rdr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors"
+                  aria-label="YouTube"
+                >
+                  <MaterialSymbol
+                    name="play_circle"
+                    className="text-secondary"
+                  />
+                </a>
+                <a
+                  href="https://x.com/EfuaBlackk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors"
+                  aria-label="YouTube"
+                >
+                  <MaterialSymbol
+                    name="play_circle"
+                    className="text-secondary"
+                  />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@efuablack"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors"
                   aria-label="Spotify"
                 >
-                  <MaterialSymbol name="music_note" className="text-secondary" />
+                  <MaterialSymbol
+                    name="music_note"
+                    className="text-secondary"
+                  />
                 </a>
                 <a
-                  href="https://www.instagram.com"
+                  href="https://www.instagram.com/efuablackk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors"
                   aria-label="Instagram"
                 >
-                  <MaterialSymbol name="photo_camera" className="text-secondary" />
+                  <MaterialSymbol
+                    name="photo_camera"
+                    className="text-secondary"
+                  />
                 </a>
               </div>
             </div>

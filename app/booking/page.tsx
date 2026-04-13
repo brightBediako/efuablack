@@ -21,8 +21,9 @@ export default function BookingPage() {
             Book Efua Black
           </h1>
           <p className="mt-6 text-on-surface-variant max-w-2xl text-lg font-body font-light tracking-wide leading-relaxed">
-            Invite a soulful presence to your next gathering. Whether for ministry, concert, or special
-            engagement, we seek to create an atmosphere of divine connection.
+            Invite a soulful presence to your next gathering. Whether for
+            ministry, concert, or special engagement, we seek to create an
+            atmosphere of divine connection.
           </p>
         </header>
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-20">
@@ -34,29 +35,46 @@ export default function BookingPage() {
               <img
                 alt="Efua Black performing"
                 className="aspect-[4/5] w-full rounded-lg object-cover shadow-2xl grayscale transition-all duration-700 hover:grayscale-0"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD888_MdovlAKFmRUYwcErgMxtV6RUm1TUHRDuMORn9mFzG8LS-RJrnLRZHIWoMq2IZXOR2xCa58SA8pPPUA46A3XTZ-hhFjMYdkrL-rUQQaf-YWi8Wrpz-HUlTT0Sf8mMsSW30bs3HCPnsffUQ3ykTatrAAdvy0Ock4sK9QlFu3VqNSdmsg_5sjrX3e3WVQh01R7F_WeFZKgTIQB57Tpm7yTmCyYUTyetPg_CkPvuJ76jPNpjYcT25PnK-WF5RoCp52SVAEeUm4mI"
+                src="https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050993/6_jjy0yg.jpg "
               />
               <div className="relative mt-4 max-w-[220px] rounded-lg bg-secondary-container p-5 text-on-secondary-container shadow-xl sm:absolute sm:-bottom-6 sm:-right-6 sm:mt-0 sm:max-w-[200px] sm:p-6">
                 <p className="font-serif italic text-lg leading-snug">
-                  &quot;Music is the bridge between the human and the divine.&quot;
+                  &quot;Music is the bridge between the human and the
+                  divine.&quot;
                 </p>
               </div>
             </div>
             <div className="space-y-8 pt-8">
               <div>
-                <h3 className="text-2xl font-serif text-primary italic mb-4">Expectations</h3>
+                <h3 className="text-2xl font-serif text-primary italic mb-4">
+                  Expectations
+                </h3>
                 <ul className="space-y-4 font-body text-on-surface-variant">
                   <li className="flex gap-4 items-start">
-                    <MaterialSymbol name="verified" className="text-secondary" />
+                    <MaterialSymbol
+                      name="verified"
+                      className="text-secondary"
+                    />
                     <span>Initial response within 48 business hours.</span>
                   </li>
                   <li className="flex gap-4 items-start">
-                    <MaterialSymbol name="verified" className="text-secondary" />
-                    <span>Professional rider and tech requirements provided upon confirmation.</span>
+                    <MaterialSymbol
+                      name="verified"
+                      className="text-secondary"
+                    />
+                    <span>
+                      Professional rider and tech requirements provided upon
+                      confirmation.
+                    </span>
                   </li>
                   <li className="flex gap-4 items-start">
-                    <MaterialSymbol name="verified" className="text-secondary" />
-                    <span>Commitment to excellence and spiritual integrity.</span>
+                    <MaterialSymbol
+                      name="verified"
+                      className="text-secondary"
+                    />
+                    <span>
+                      Commitment to excellence and spiritual integrity.
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -67,11 +85,13 @@ export default function BookingPage() {
                 <p className="font-body text-primary-container leading-relaxed">
                   For urgent media requests or time-sensitive invitations:
                   <br />
-                  <br />
-                  <Link href="mailto:management@efuablack.com" className="font-bold block hover:underline">
-                    management@efuablack.com
+                  <Link
+                    href="mailto:management@efuablack.com"
+                    className="font-bold block hover:underline"
+                  >
+                    efuablack@gmail.com
                   </Link>
-                  <span className="opacity-70 block">+1 (555) EFUA-ART</span>
+                  <span className="opacity-70 block">+233 532 702 003</span>
                 </p>
               </div>
             </div>
