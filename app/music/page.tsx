@@ -13,21 +13,21 @@ export const metadata: Metadata = {
 
 const songs = [
   {
-    title: "Glow",
-    year: "2023",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAzfkvU6H2S6hA9WZVMMqGRZ40zNM9rjwOmNcJ1uAeFaz_Q0Tuk7oe6sCCOaYNoxJeQjRw54GcmYwR3-SfeJ-A4zCZqPn7tyA3LqlNFJAmmiAxsKDMmIWrpAIE05VEKGBncFh_02N0P73fvK0sw-UInA5orzagUTJv1lNw0E-7AD37l6I4CnE4wQT4THiZX70OnCF_dtSmW2RtRyVqRkdDk2tqbP-8ikC2M2N0UXm50HWDm4-g6RnduYvMjTTf6O7ghqmDnKSJv8KU",
+    title: "Testify",
+    year: "2026",
+    img: "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpgU",
     alt: "Abstract musical cover art with swirling purple and gold light trails against a dark deep velvet background",
   },
   {
     title: "Grace Found Me",
     year: "2022",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCRdQpHFRvgeXY-DTRfHXWAPFMtL3pwZRu_tiWFPqH8-3k65gX9uEXCKQYT1Nmj6zdS7RObFF8vs18_VB7oflXINYubSAu5Y6qy5XnK4R6r0iOuvk0v_5A-x-HNKxWvDnSABoolEgZ4pZOa-0DhlUUEr2eVwEw_aEAmnA4IJTyCqUt-Kw2faE0_btahUQcJ8gFxeY5Ps5DDZIvjnpCuTpxsJaGM8jO7KqvtHgLpHjv1gPEs5aKyYW400ixyB0oxGggrYjy1ritZxp8",
+    img: "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/4_cjztqn.jpg",
     alt: "Modern minimalist cover art showing a single spotlight beam cutting through a misty violet void onto a golden stone",
   },
   {
-    title: "Midnight Prayer",
+    title: "Amazing God",
     year: "2022",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAl-u2cqzyhmDWBaNYGG6SAh5w3PFq17Ij1_7sr2H2AsHeZoXEGUBdLFkx3Vqq-srm8fYOPY7p5dv5MQJLRLeppW9Y9Qb0VcsaUgXBaxKT8jcfMZTcSaDNwpzpyn3CK4tWdtA6mSNmgc1JKN8Wtdm0EzM_339oV5Tn3D4ylpF_ojTklGS3QKMmO3iG0UYBpCeJh7AWLZ1j0NhiGj6Rup5UvILb6HHYtgM6XbuH1Vs8O08--Bq3VHgyMmVhKZ5Oe63Skz5MSiud9QYQ",
+    img: "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/5_derlqf.jpg",
     alt: "Atmospheric cover art featuring a dark starry sky reflecting in a still lake with a subtle purple horizon glow",
   },
 ];
@@ -53,14 +53,18 @@ export default function MusicPage() {
                 <img
                   alt="Featured track Testify"
                   className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd3OH9kJoGzHS7eBAXxj5Qssfmy1LLhDYJUm8f9c3yerpuxC2usszVw48d2rCWDcweSWxNf-T7m9TqMFXl9bTLsd4qvjJEbZfHEaRM89Uyqaa8hhBzfQMKleRJTpvBRkj1sxMAyRv4vdRqvx1nzrASES0CEtXgtTjmKfRYqn4b-U6T7EwRkM8of3tMPs7Q1xAwNNVXv074vn1ZLfxFxpTUGkPV_P9O9QzHKsaZg98htEIgrOYwDfZKOIjaR3wRlhBGE13Cf8Gt5mA"
+                  src="https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpg"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <button
                     type="button"
                     className="w-24 h-24 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-2xl active:scale-90 transition-transform"
                   >
-                    <MaterialSymbol name="play_arrow" className="text-5xl" filled />
+                    <MaterialSymbol
+                      name="play_arrow"
+                      className="text-5xl"
+                      filled
+                    />
                   </button>
                 </div>
               </div>
@@ -72,24 +76,28 @@ export default function MusicPage() {
                 </span>
               </div>
               <h2 className="font-headline text-6xl italic text-primary mb-6">
-                <Link href="/music/testify">Testify</Link>
+                <Link href="https://www.youtube.com/watch?v=BwjSkfRhD2A">
+                  Testify
+                </Link>
               </h2>
               <p className="font-body text-on-surface-variant leading-relaxed mb-10">
-                An uplifting journey through grace and redemption. This single captures the essence of
-                divine presence in the quietest moments of life.
+                TESTIFY is a powerful gospel song by Efua Black, featuring the
+                renowned Diana Hamilton.
               </p>
               <div className="space-y-4">
                 <p className="font-label text-xs uppercase tracking-[0.2em] text-outline mb-6">
                   Listen on your platform
                 </p>
                 <div className="grid grid-cols-1 gap-3">
-                  {["Spotify", "Apple Music", "YouTube Music"].map((label) => (
+                  {["YouTube Music"].map((label) => (
                     <button
                       key={label}
                       type="button"
                       className="flex items-center justify-between w-full px-6 py-4 bg-surface-container-lowest hover:bg-surface-container-high transition-colors text-primary group"
                     >
-                      <span className="font-label text-sm uppercase tracking-widest">{label}</span>
+                      <span className="font-label text-sm uppercase tracking-widest">
+                        {label}
+                      </span>
                       <MaterialSymbol
                         name="arrow_outward"
                         className="text-xl group-hover:translate-x-1 transition-transform"
@@ -104,30 +112,49 @@ export default function MusicPage() {
 
         <section className="mt-40">
           <div className="flex justify-between items-end mb-12">
-            <h3 className="font-headline text-4xl italic text-primary">The Collection</h3>
+            <h3 className="font-headline text-4xl italic text-primary">
+              The Collection
+            </h3>
             <div className="h-px bg-outline-variant flex-grow mx-8 mb-4 opacity-30 hidden md:block" />
-            <span className="font-label text-sm text-outline uppercase tracking-widest">12 Tracks Released</span>
+            <span className="font-label text-sm text-outline uppercase tracking-widest">
+              12 Tracks Released
+            </span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
             {songs.map((s) => (
               <div key={s.title} className="group">
                 <div className="relative bg-surface-container-low overflow-hidden aspect-square mb-6">
-                  <img alt={s.alt} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src={s.img} />
+                  <img
+                    alt={s.alt}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                    src={s.img}
+                  />
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <button
                       type="button"
                       className="w-16 h-16 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xl active:scale-90 transition-transform"
                     >
-                      <MaterialSymbol name="play_arrow" className="text-3xl" filled />
+                      <MaterialSymbol
+                        name="play_arrow"
+                        className="text-3xl"
+                        filled
+                      />
                     </button>
                   </div>
                 </div>
                 <div className="flex justify-between items-start">
                   <div>
-                    <h4 className="font-headline text-2xl italic text-primary">{s.title}</h4>
-                    <p className="font-label text-sm text-on-surface-variant opacity-70">{s.year}</p>
+                    <h4 className="font-headline text-2xl italic text-primary">
+                      {s.title}
+                    </h4>
+                    <p className="font-label text-sm text-on-surface-variant opacity-70">
+                      {s.year}
+                    </p>
                   </div>
-                  <button type="button" className="text-secondary hover:text-on-secondary-container transition-colors">
+                  <button
+                    type="button"
+                    className="text-secondary hover:text-on-secondary-container transition-colors"
+                  >
                     <MaterialSymbol name="more_vert" />
                   </button>
                 </div>
@@ -142,13 +169,16 @@ export default function MusicPage() {
               Be the first to hear new melodies.
             </h2>
             <p className="font-body text-on-surface-variant mb-10 text-lg">
-              Join Efua&apos;s mailing list for early access to releases, live sessions, and spiritual
-              reflections.
+              Join Efua&apos;s mailing list for early access to releases, live
+              sessions, and spiritual reflections.
             </p>
             <SubscribeForm variant="section" />
           </div>
           <div className="absolute -right-20 -bottom-20 opacity-10 pointer-events-none">
-            <MaterialSymbol name="music_note" className="text-[300px] text-secondary" />
+            <MaterialSymbol
+              name="music_note"
+              className="text-[300px] text-secondary"
+            />
           </div>
         </section>
       </main>
@@ -163,11 +193,18 @@ export default function MusicPage() {
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLd5JnNU8JZu6irH8yKcpXpokmSp7j6eA2zrxvjdZbSz20VCxIy-VviHiZkSW3uxwnixeh69n4vuJBbaPHbTkspuWzlR11b0WJsJ07zVFvttITCvmrjWLrAoHyG7FOo7XPsJicg5hK9mth9Fu4JOQpeM7AZtrG5kJ-tWS_tmNa2nNAoi0mvOI4_jVNjTb8sfjFDz5iS0amVHHO7a_F616rUQ_6gt7eGURP1-Dn3LpRkHBBQkBG4wyybaUvi72EQ7uwIXarG-JHkwU"
           />
           <div className="flex-grow">
-            <p className="font-headline italic text-lg text-primary leading-none">Testify</p>
-            <p className="font-label text-[10px] uppercase tracking-widest text-outline">Efua Black</p>
+            <p className="font-headline italic text-lg text-primary leading-none">
+              Testify
+            </p>
+            <p className="font-label text-[10px] uppercase tracking-widest text-outline">
+              Efua Black
+            </p>
           </div>
           <div className="flex items-center gap-4">
-            <button type="button" className="text-primary hover:text-secondary transition-colors">
+            <button
+              type="button"
+              className="text-primary hover:text-secondary transition-colors"
+            >
               <MaterialSymbol name="skip_previous" className="text-2xl" />
             </button>
             <button
@@ -176,7 +213,10 @@ export default function MusicPage() {
             >
               <MaterialSymbol name="pause" className="text-2xl" filled />
             </button>
-            <button type="button" className="text-primary hover:text-secondary transition-colors">
+            <button
+              type="button"
+              className="text-primary hover:text-secondary transition-colors"
+            >
               <MaterialSymbol name="skip_next" className="text-2xl" />
             </button>
           </div>
