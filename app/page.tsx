@@ -34,8 +34,10 @@ export default function HomePage() {
             </h1>
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
               <Link
-                href="/music/testify"
+                href="https://www.youtube.com/watch?v=BwjSkfRhD2A"
                 className="px-10 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-label tracking-widest uppercase hover:opacity-90 transition-all w-full md:w-auto text-center"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Watch Now
               </Link>
@@ -67,18 +69,27 @@ export default function HomePage() {
                 </span>
               </div>
             </div>
-            <div className="aspect-video w-full bg-primary-container relative group cursor-pointer overflow-hidden rounded-lg">
-              <img
-                alt="cinematic close-up of Efua Black singing with eyes closed in a dimly lit cathedral environment"
-                className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAILrFs4ECV87-Hs35Gj96ZFW7Loadc2SzMTA6Z_B9GObdNxg7XgWsKiN0PsNWOAZLZngX3LL1uqU2PvIIi2HwdkyT2knBV7k01dFcQv4Y5qsHltkkEkfTsonypBCYcfdXR0z0YglDTVc-sQAYjWD1B4oRJykVtaineRvLgpKi_kBWIQQsIe315hUvBoa5Pg6F7X7S919zhtuihMMmhhq20tl_22-OQ9sRvMPMxSHGePRHBqr3jD14RMWa_HWRZgngyiM-AnLQD7Nk"
+            <div className="aspect-video w-full bg-black relative overflow-hidden rounded-lg">
+              <iframe
+                className="absolute inset-0 h-full w-full border-0 rounded-lg"
+                src="https://www.youtube.com/embed/BwjSkfRhD2A?rel=0"
+                title="Efua Black ft. Diana Hamilton – TESTIFY [ Official Video ]"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                loading="lazy"
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-24 h-24 bg-secondary flex items-center justify-center rounded-full shadow-xl group-hover:scale-110 transition-transform">
-                  <MaterialSymbol name="play_arrow" className="text-on-secondary text-5xl" filled />
-                </div>
-              </div>
             </div>
+            <p className="mt-3 text-center">
+              <a
+                href="https://www.youtube.com/watch?v=BwjSkfRhD2A"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-label text-sm text-secondary underline-offset-4 hover:underline"
+              >
+                Open on YouTube
+              </a>
+            </p>
           </div>
         </section>
 
@@ -90,7 +101,7 @@ export default function HomePage() {
                 <img
                   alt="artistic portrait of Efua Black wearing elegant purple attire, holding a vintage microphone, warm soft lighting"
                   className="w-full aspect-[4/5] object-cover rounded-xl shadow-2xl relative z-10"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUbFWARBKxmr--BcsbLMDazm4E7c2VqSfoanSnQTPGCGNpEygA-L5V1WFAyoGf6xDZyIHcH-nyt9nolFX14jJgeNKSzUcv5htBg9RyhAaJQWytlvvSUVDW9aqaN_JWWUw3d2AolUCL7ClUICI7-wMBh1PLzRWPIHSWHK5LIWOk1fcULUAXsTfPC6quu3jWfAocYK5xxNHSQuAm4ESBF99LPETlvhmStoU9309pYhMHLVGR--nx9zGxa0cWFw3YkC-EPFbOX-wawu0"
+                  src="https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050993/12_tyayqz.jpg"
                 />
               </div>
               <div className="md:w-1/2">
@@ -134,11 +145,11 @@ export default function HomePage() {
                 <img
                   alt="album art for Testify, abstract golden textures and spiritual symbolism with elegant typography"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBA4TRSqNJgv11HqV64CsooWIIF2H6Ng1xxxJIIUHhscLV9alRg_5mvVxZUQCu_nKELEduF8hhP1rRUAwcP3a3KNed399_eUTGz4MpH-z2YRfbhlxxx1D9d7KVPyIEtE5B0N6ECWZr4JT4556W4n2WqUYitahNDg7V4WH4JsrgBJRzqix5tAvGwHfADSqwFOG5iTdz4g1hNvCtEwB1xdox0mk6VTTqDNJZSlYMuJ1IvdrRB7eTebXkXooWuol8M_W27HchKhUMhE"
+                  src="https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent p-12 flex flex-col justify-end">
                   <span className="text-tertiary-fixed text-sm font-label uppercase tracking-widest mb-2">
-                    2024
+                    2026
                   </span>
                   <h3 className="font-headline text-4xl text-on-primary mb-4">Testify</h3>
                   <div className="flex gap-4">
@@ -158,24 +169,25 @@ export default function HomePage() {
                 <img
                   alt="album art for Mercy, soft lavender colors and a simple ethereal cross symbol"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdehfyNpxnghWY6smfaN3THiGlS1efpWamPBnqCI38euAQAcNF_77mpzNYeCUe4DiPDynF8qb7copvO6uvpHuUtQjbQV6JDXlOj2ND_bQxD0gIYFNrQzOr1vgqisrIaBHUC5Jg3gDENe7RKtTj5mxVLXgbtjlyKJ7tutACoiD5R7jEojxVH2zntMA-sTRJFLaO0ZwBig1ZedFySJ0yJVgWd-z2XxyGxtCGeRBuwtBX8Xk4zgzuR8O9NX1KvQq0fbnnDw6fkbRkMW8"
+                  src="https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/4_cjztqn.jpg"
                 />
                 <div className="absolute inset-0 bg-primary/40 group-hover:bg-primary/60 transition-colors flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <h3 className="font-headline text-2xl text-on-primary">Mercy Flows</h3>
-                  <p className="text-on-primary/70 text-sm">2023</p>
+                  <h3 className="font-headline text-2xl text-on-primary">Me Hia Wo</h3>
+                  <p className="text-on-primary/70 text-sm">2024</p>
                 </div>
               </div>
               <div className="group relative aspect-square overflow-hidden bg-surface-container-high">
                 <img
                   alt="album art for Abundant Grace, vibrant warm sunrise tones and modern serif typography"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl14mwdLWe1-fcD-EVoFWN9HnaKStFVjlOhJ_-L9PUiZ2UFrBa4iiYhbdzpMcx6PPmp5V_SL7_WUtWZqOnqFoKSCRv3k3DRWT6bkbQHUrQ4xQMADqXyjvZhem-9qhCRQ0CkHjP1sBuqtT-lFeKjc2clNRWH17ip2IIE7ROWb28xa-3Byg6K_eBX90Py8e15LYhhUqYOCWSUnvyI8k1YEipj1DBBIy6SmiXO0djHSuqrPs5PkMFwmtaTFTfv-EiAC4wJNQOfXa_k7c"
+                  src="https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/5_derlqf.jpg"
                 />
                 <div className="absolute inset-0 bg-primary/40 group-hover:bg-primary/60 transition-colors flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <h3 className="font-headline text-2xl text-on-primary">Abundant Grace</h3>
-                  <p className="text-on-primary/70 text-sm">2022</p>
+                  <h3 className="font-headline text-2xl text-on-primary">Amazing God</h3>
+                  <p className="text-on-primary/70 text-sm">2023</p>
                 </div>
               </div>
+
               <div className="md:col-span-2 group relative aspect-[2/1] overflow-hidden bg-surface-container-high">
                 <img
                   alt="album art for Live in London, wide shot of an arena concert with purple and gold stage lights"
@@ -202,21 +214,7 @@ export default function HomePage() {
             </div>
             <div className="space-y-4">
               {[
-                { m: "OCT", d: "12", title: "Night of Wonders", loc: "Lagos Convention Center, Nigeria", cta: "Reserve Seat" },
-                {
-                  m: "NOV",
-                  d: "05",
-                  title: "Worship Without Borders",
-                  loc: "Royal Albert Hall, London",
-                  cta: "Reserve Seat",
-                },
-                {
-                  m: "DEC",
-                  d: "24",
-                  title: "A Christmas Encounter",
-                  loc: "Online Global Broadcast",
-                  cta: "Join Stream",
-                },
+                { m: "APRIL", d: "26", title: "Holy Ghost Experience", loc: "Word of Life - Assemlies of God, Anaji Takoradi", cta: "Reserve Seat" },
               ].map((ev) => (
                 <div
                   key={ev.title}

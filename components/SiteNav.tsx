@@ -8,7 +8,7 @@ export type NavKey =
   | "home"
   | "about"
   | "music"
-  | "ministry"
+  // | "ministry"
   | "events"
   | "media"
   | "booking"
@@ -21,7 +21,7 @@ export type NavShell =
   | "home"
   | "about"
   | "music"
-  | "ministry"
+  // | "ministry"
   | "events"
   | "media"
   | "booking"
@@ -32,7 +32,7 @@ const shellClass: Record<NavShell, string> = {
   home: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl dark:bg-[#0f0019]/80",
   about: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl",
   music: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl",
-  ministry: "fixed top-0 z-50 flex w-full flex-col items-stretch glass-nav",
+  // ministry: "fixed top-0 z-50 flex w-full flex-col items-stretch glass-nav",
   events: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl dark:bg-[#0f0019]/80",
   media: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl dark:bg-[#0f0019]/80",
   booking: "fixed top-0 z-50 flex w-full flex-col items-stretch bg-[#fdf8fd]/80 backdrop-blur-xl dark:bg-[#0f0019]/80",
@@ -67,7 +67,7 @@ const NAV: { href: string; key: NavKey; label: string }[] = [
   { href: "/", key: "home", label: "Home" },
   { href: "/about", key: "about", label: "About" },
   { href: "/music", key: "music", label: "Music" },
-  { href: "/ministry", key: "ministry", label: "Ministry" },
+  // { href: "/ministry", key: "ministry", label: "Ministry" },
   { href: "/events", key: "events", label: "Events" },
   { href: "/media", key: "media", label: "Media" },
   { href: "/booking", key: "booking", label: "Booking" },
