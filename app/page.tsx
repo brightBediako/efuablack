@@ -188,7 +188,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="md:col-span-2 group relative aspect-[2/1] overflow-hidden bg-surface-container-high">
+              {/* <div className="md:col-span-2 group relative aspect-[2/1] overflow-hidden bg-surface-container-high">
                 <img
                   alt="album art for Live in London, wide shot of an arena concert with purple and gold stage lights"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
@@ -199,7 +199,7 @@ export default function HomePage() {
                   <h3 className="font-headline text-3xl text-on-primary">The Encounter: Live</h3>
                   <p className="text-on-primary/70 text-sm">2021</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
