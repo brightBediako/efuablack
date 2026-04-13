@@ -4,6 +4,7 @@ import type { MediaDoc } from "@/models/Media";
 import { Media } from "@/models/Media";
 import { AdminCard } from "@/components/admin/AdminCard";
 import { AdminEmptyState } from "@/components/admin/AdminEmptyState";
+import { AdminRowActions } from "@/components/admin/AdminRowActions";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 
 export const dynamic = "force-dynamic";
@@ -34,6 +35,7 @@ export default async function AdminMediaPage() {
                   <th scope="col" className="px-4 py-3">Title</th>
                   <th scope="col" className="px-4 py-3">Picture</th>
                   <th scope="col" className="px-4 py-3">Description</th>
+                  <th scope="col" className="px-4 py-3">Actions</th>
                 </tr>
               </thead>
               <tbody className="font-body">
@@ -56,6 +58,17 @@ export default async function AdminMediaPage() {
                       </a>
                     </td>
                     <td className="max-w-[500px] px-4 py-3 text-on-surface-variant">{r.description}</td>
+                    <td className="px-4 py-3">
+                      <AdminRowActions
+                        id={String(r._id)}
+                        endpoint="/api/admin/media"
+                        current={{
+                          title: r.title,
+                          description: r.description,
+                          picture: r.picture,
+                        }}
+                      />
+                    </td>
                   </tr>
                 ))}
               </tbody>

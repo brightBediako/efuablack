@@ -18,19 +18,53 @@ function truncate(s: string, n: number) {
   return `${s.slice(0, n)}…`;
 }
 
-export default async function AdminContactsPage() {
+export default async function AdminContactsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; page?: string }>;
+}) {
+  const sp = await searchParams;
+  const query = (sp.q ?? "").trim();
+  const page = Math.max(1, Number(sp.page ?? "1") || 1);
+  const pageSize = 100;
   await connectDB();
-  const rows = (await Contact.find().sort({ createdAt: -1 }).limit(500).lean()) as (ContactDoc & {
-    _id: unknown;
-  })[];
+  const where = query
+    ? {
+        $or: [
+          { name: { $regex: query, $options: "i" } },
+          { email: { $regex: query, $options: "i" } },
+          { subject: { $regex: query, $options: "i" } },
+        ],
+      }
+    : {};
+  const total = await Contact.countDocuments(where);
+  const rows = (await Contact.find(where)
+    .sort({ createdAt: -1 })
+    .skip((page - 1) * pageSize)
+    .limit(pageSize)
+    .lean()) as (ContactDoc & { _id: unknown })[];
+  const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
   return (
     <div className="space-y-6">
       <AdminSectionHeader
         title="Contacts"
-        subtitle="Latest 500 messages."
+        subtitle="Contact messages."
         icon="mail"
       />
+      <AdminCard className="p-4">
+        <form className="flex items-center gap-2">
+          <input
+            name="q"
+            defaultValue={query}
+            placeholder="Search name/email/subject"
+            className="rounded-lg border border-outline-variant/60 bg-surface px-3 py-2 text-sm"
+          />
+          <button type="submit" className="rounded-lg border border-outline-variant px-3 py-2 text-xs uppercase">
+            Search
+          </button>
+        </form>
+      </AdminCard>
 
       {rows.length === 0 ? (
         <AdminEmptyState
@@ -79,6 +113,23 @@ export default async function AdminContactsPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+          <div className="flex items-center justify-between border-t border-outline-variant/40 px-4 py-3 text-xs text-on-surface-variant">
+            <p>
+              Page {page} of {totalPages} ({total} total)
+            </p>
+            <div className="flex gap-2">
+              {page > 1 ? (
+                <a href={`?q=${encodeURIComponent(query)}&page=${page - 1}`} className="rounded border px-2 py-1">
+                  Prev
+                </a>
+              ) : null}
+              {page < totalPages ? (
+                <a href={`?q=${encodeURIComponent(query)}&page=${page + 1}`} className="rounded border px-2 py-1">
+                  Next
+                </a>
+              ) : null}
+            </div>
           </div>
         </AdminCard>
       )}

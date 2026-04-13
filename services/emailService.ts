@@ -26,14 +26,23 @@ async function send(options: {
     console.warn("[email] SMTP not configured; skipped:", options.subject);
     return { sent: false, skipped: true };
   }
-  await transport.sendMail({
-    from: `"Efua Black" <${from}>`,
-    to: options.to,
-    subject: options.subject,
-    text: options.text,
-    html: options.html,
-  });
-  return { sent: true };
+  try {
+    await transport.sendMail({
+      from: `"Efua Black" <${from}>`,
+      to: options.to,
+      subject: options.subject,
+      text: options.text,
+      html: options.html,
+    });
+    return { sent: true };
+  } catch (e) {
+    console.error("[email] send failure", {
+      to: options.to,
+      subject: options.subject,
+      error: e instanceof Error ? e.message : "unknown",
+    });
+    throw e;
+  }
 }
 
 export async function notifyBookingToAdmin(doc: BookingDoc): Promise<void> {

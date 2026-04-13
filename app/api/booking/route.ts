@@ -37,6 +37,10 @@ export async function POST(req: Request) {
     await createBooking(payload);
     return NextResponse.json({ ok: true }, { status: 201 });
   } catch (e) {
+    console.error("[api/booking] request failed", {
+      ip: getClientIp(req),
+      error: e instanceof Error ? e.message : "unknown",
+    });
     return publicFormErrorResponse(e, "[api/booking]");
   }
 }

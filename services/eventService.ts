@@ -30,3 +30,14 @@ export async function registerForEvent(input: EventRegistrationInput) {
     phone: input.phone,
   });
 }
+
+export async function updateEventById(id: string, input: EventCreateInput) {
+  await connectDB();
+  return Event.findByIdAndUpdate(id, input, { new: true });
+}
+
+export async function deleteEventById(id: string) {
+  await connectDB();
+  await EventRegistration.deleteMany({ eventId: id });
+  return Event.findByIdAndDelete(id);
+}

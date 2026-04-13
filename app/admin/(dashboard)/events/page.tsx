@@ -5,6 +5,7 @@ import { Event } from "@/models/Event";
 import { EventRegistration } from "@/models/EventRegistration";
 import { AdminCard } from "@/components/admin/AdminCard";
 import { AdminEmptyState } from "@/components/admin/AdminEmptyState";
+import { AdminRowActions } from "@/components/admin/AdminRowActions";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 
 export const dynamic = "force-dynamic";
@@ -46,6 +47,7 @@ export default async function AdminEventsPage() {
                   <th scope="col" className="px-4 py-3">Location</th>
                   <th scope="col" className="px-4 py-3">Registrations</th>
                   <th scope="col" className="px-4 py-3">Cover</th>
+                  <th scope="col" className="px-4 py-3">Actions</th>
                 </tr>
               </thead>
               <tbody className="font-body">
@@ -74,6 +76,19 @@ export default async function AdminEventsPage() {
                       >
                         Open
                       </a>
+                    </td>
+                    <td className="px-4 py-3">
+                      <AdminRowActions
+                        id={String(r._id)}
+                        endpoint="/api/admin/events"
+                        current={{
+                          title: r.title,
+                          description: r.description,
+                          coverPicture: r.coverPicture,
+                          eventDate: r.eventDate,
+                          location: r.location,
+                        }}
+                      />
                     </td>
                   </tr>
                 ))}

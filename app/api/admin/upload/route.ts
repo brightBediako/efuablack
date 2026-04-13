@@ -3,7 +3,7 @@ import { requireAdminApi } from "@/lib/admin-api-guard";
 import { uploadImageToCloudinary } from "@/lib/cloudinary-upload";
 
 export async function POST(req: Request) {
-  const unauthorized = await requireAdminApi();
+  const unauthorized = await requireAdminApi(req);
   if (unauthorized) return unauthorized;
 
   const formData = await req.formData();
@@ -30,13 +30,23 @@ export async function POST(req: Request) {
   const mimeType = entry.type || "image/*";
   const publicIdBase = (entry.name ?? "").replace(/\.[^/.]+$/, "");
 
-  const result = await uploadImageToCloudinary({
-    buffer,
-    folder,
-    mimeType,
-    publicIdBase,
-  });
-
-  return NextResponse.json({ ok: true, data: { url: result.url, secureUrl: result.secureUrl, publicId: result.publicId } });
+  try {
+    const result = await uploadImageToCloudinary({
+      buffer,
+      folder,
+      mimeType,
+      publicIdBase,
+    });
+    return NextResponse.json({
+      ok: true,
+      data: { url: result.url, secureUrl: result.secureUrl, publicId: result.publicId },
+    });
+  } catch (e) {
+    console.error("[api/admin/upload] upload failed", {
+      folder,
+      error: e instanceof Error ? e.message : "unknown",
+    });
+    return NextResponse.json({ ok: false, message: "Upload failed." }, { status: 500 });
+  }
 }
 

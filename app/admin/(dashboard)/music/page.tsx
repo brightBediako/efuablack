@@ -4,6 +4,7 @@ import type { MusicDoc } from "@/models/Music";
 import { Music } from "@/models/Music";
 import { AdminCard } from "@/components/admin/AdminCard";
 import { AdminEmptyState } from "@/components/admin/AdminEmptyState";
+import { AdminRowActions } from "@/components/admin/AdminRowActions";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 
 export const dynamic = "force-dynamic";
@@ -35,6 +36,7 @@ export default async function AdminMusicPage() {
                   <th scope="col" className="px-4 py-3">Year</th>
                   <th scope="col" className="px-4 py-3">Cover</th>
                   <th scope="col" className="px-4 py-3">Links</th>
+                  <th scope="col" className="px-4 py-3">Actions</th>
                 </tr>
               </thead>
               <tbody className="font-body">
@@ -64,6 +66,21 @@ export default async function AdminMusicPage() {
                     </td>
                     <td className="px-4 py-3 text-xs text-on-surface-variant">
                       {[r.spotify, r.appleMusic, r.youtubeMusic].filter(Boolean).length} platforms
+                    </td>
+                    <td className="px-4 py-3">
+                      <AdminRowActions
+                        id={String(r._id)}
+                        endpoint="/api/admin/music"
+                        current={{
+                          title: r.title,
+                          description: r.description,
+                          coverPicture: r.coverPicture,
+                          yearRelease: r.yearRelease,
+                          spotify: r.spotify,
+                          appleMusic: r.appleMusic,
+                          youtubeMusic: r.youtubeMusic,
+                        }}
+                      />
                     </td>
                   </tr>
                 ))}

@@ -17,17 +17,22 @@ export default function PrivacyPage() {
         <p className="text-on-surface-variant text-sm mb-10">Last updated: March 2026</p>
         <div className="space-y-6 text-on-surface-variant leading-relaxed">
           <p>
-            This Privacy Policy describes how Efua Black Ministry (&quot;we,&quot; &quot;us&quot;) handles
-            information when you use this website. A full legal policy will be finalized before launch;
-            this page is a placeholder so navigation and footer links work correctly.
+            Efua Black Ministry (&quot;we,&quot; &quot;us&quot;) collects only the information needed to
+            respond to bookings, contact requests, and newsletter subscriptions. Information may include
+            your name, email, phone number, organization, and message details that you voluntarily submit.
           </p>
           <p>
-            When you submit forms (subscribe, booking, contact), your data should be processed only as
-            described in the final policy and any consent you provide. Server-side storage and
-            third-party services (email, analytics) will be listed here once configured.
+            We use this information to reply to inquiries, coordinate ministry events, deliver requested
+            communications, and improve our services. We do not sell your personal information. We may use
+            trusted service providers for hosting, email delivery, spam protection, and media delivery.
           </p>
           <p>
-            For questions, please{" "}
+            Submitted records may be retained for ministry operations, legal obligations, and anti-abuse
+            monitoring. You may request access, correction, or deletion of your personal data by contacting
+            us directly.
+          </p>
+          <p>
+            For questions or privacy requests, please{" "}
             <Link href="/contact" className="text-secondary font-medium hover:underline">
               contact us
             </Link>

@@ -5,34 +5,16 @@ import { SubscribeForm } from "@/components/forms/SubscribeForm";
 import { MaterialSymbol } from "@/components/MaterialSymbol";
 import { SiteNav } from "@/components/SiteNav";
 import { defaultDescription } from "@/lib/site-config";
+import { listMusic } from "@/services/musicService";
 
 export const metadata: Metadata = {
   title: "Music",
   description: `Sacred discography and releases — ${defaultDescription}`,
 };
 
-const songs = [
-  {
-    title: "Testify",
-    year: "2026",
-    img: "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpgU",
-    alt: "Abstract musical cover art with swirling purple and gold light trails against a dark deep velvet background",
-  },
-  {
-    title: "Me Hia Wo",
-    year: "2024",
-    img: "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/4_cjztqn.jpg",
-    alt: "Modern minimalist cover art showing a single spotlight beam cutting through a misty violet void onto a golden stone",
-  },
-  {
-    title: "Amazing God",
-    year: "2023",
-    img: "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/5_derlqf.jpg",
-    alt: "Atmospheric cover art featuring a dark starry sky reflecting in a still lake with a subtle purple horizon glow",
-  },
-];
-
-export default function MusicPage() {
+export default async function MusicPage() {
+  const songs = await listMusic();
+  const featured = songs[0];
   return (
     <>
       <SiteNav shell="music" active="music" />
@@ -51,9 +33,9 @@ export default function MusicPage() {
             <div className="lg:col-span-8 bg-surface-container-low overflow-hidden relative group">
               <div className="aspect-video w-full bg-primary overflow-hidden">
                 <img
-                  alt="Featured track Testify"
+                  alt={`Featured track ${featured?.title ?? "Efua Black"}`}
                   className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000"
-                  src="https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpg"
+                  src={featured?.coverPicture ?? "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpg"}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <button
@@ -76,33 +58,41 @@ export default function MusicPage() {
                 </span>
               </div>
               <h2 className="font-headline text-6xl italic text-primary mb-6">
-                <Link href="https://www.youtube.com/watch?v=BwjSkfRhD2A">
-                  Testify
+                <Link href={featured?.youtubeMusic || "#"}>
+                  {featured?.title ?? "Latest Release"}
                 </Link>
               </h2>
               <p className="font-body text-on-surface-variant leading-relaxed mb-10">
-                TESTIFY is a powerful gospel song by Efua Black, featuring the
-                renowned Diana Hamilton.
+                {featured?.description ??
+                  "Experience the latest worship release from Efua Black and discover songs that minister to the soul."}
               </p>
               <div className="space-y-4">
                 <p className="font-label text-xs uppercase tracking-[0.2em] text-outline mb-6">
                   Listen on your platform
                 </p>
                 <div className="grid grid-cols-1 gap-3">
-                  {["YouTube Music"].map((label) => (
-                    <button
-                      key={label}
-                      type="button"
+                  {[
+                    { label: "Spotify", href: featured?.spotify },
+                    { label: "Apple Music", href: featured?.appleMusic },
+                    { label: "YouTube Music", href: featured?.youtubeMusic },
+                  ]
+                    .filter((item) => item.href)
+                    .map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href!}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center justify-between w-full px-6 py-4 bg-surface-container-lowest hover:bg-surface-container-high transition-colors text-primary group"
                     >
                       <span className="font-label text-sm uppercase tracking-widest">
-                        {label}
+                        {item.label}
                       </span>
                       <MaterialSymbol
                         name="arrow_outward"
                         className="text-xl group-hover:translate-x-1 transition-transform"
                       />
-                    </button>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -117,7 +107,7 @@ export default function MusicPage() {
             </h3>
             <div className="h-px bg-outline-variant flex-grow mx-8 mb-4 opacity-30 hidden md:block" />
             <span className="font-label text-sm text-outline uppercase tracking-widest">
-              12 Tracks Released
+              {songs.length} Tracks Released
             </span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
@@ -125,9 +115,9 @@ export default function MusicPage() {
               <div key={s.title} className="group">
                 <div className="relative bg-surface-container-low overflow-hidden aspect-square mb-6">
                   <img
-                    alt={s.alt}
+                    alt={s.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                    src={s.img}
+                    src={s.coverPicture}
                   />
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <button
@@ -148,7 +138,7 @@ export default function MusicPage() {
                       {s.title}
                     </h4>
                     <p className="font-label text-sm text-on-surface-variant opacity-70">
-                      {s.year}
+                      {s.yearRelease}
                     </p>
                   </div>
                   <button

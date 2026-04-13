@@ -1,16 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EventRegistrationForm } from "@/components/events/EventRegistrationForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { MaterialSymbol } from "@/components/MaterialSymbol";
 import { SiteNav } from "@/components/SiteNav";
+import { connectDB } from "@/lib/db";
 import { defaultDescription } from "@/lib/site-config";
+import { EventRegistration } from "@/models/EventRegistration";
+import { listEvents } from "@/services/eventService";
 
 export const metadata: Metadata = {
   title: "Events",
   description: `Upcoming worship gatherings and ministry events — ${defaultDescription}`,
 };
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const events = await listEvents();
+  await connectDB();
+  const registrationCounts = await EventRegistration.aggregate<{ _id: string; count: number }>([
+    { $group: { _id: "$eventId", count: { $sum: 1 } } },
+  ]);
+  const countByEvent = new Map<string, number>(
+    registrationCounts.map((item) => [String(item._id), item.count]),
+  );
+  const [featured, ...upcoming] = events;
+
   return (
     <>
       <SiteNav shell="events" active="events" />
@@ -36,111 +50,80 @@ export default function EventsPage() {
         </header>
 
         <section className="px-12 max-w-screen-2xl mx-auto mb-32">
-          <div className="relative bg-surface-container-low rounded-xl overflow-hidden min-h-[600px] flex items-center group">
-            <div className="absolute inset-0 z-0">
-              <img
-                alt="Worship Concert"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-40"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdRNgrudNpMXyJfLmo3G7IDxcLC74N-pvh5X0jFIz_GLdC02-1Qo_2Fakr7ETu6FA2WFfr-GyK7yzm1mmtpg9usvQvv6EoXbpXMA42tHQokTiH2cJ02ar4smkhIlxyMWNlP4SHbMCuHJ8InusRMmJrbNcoHe1OAyHU2ePFFy1sZhdpcDEJJmueRCnxEsr90D8SGY6vDUJgIiPtZ3IzyagsoJXC1iehQl3K5hSQlIYTajc4aOF0vzdXJDsdQkerZPzswyyXOTfj9kA"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-surface-container-low via-surface-container-low/80 to-transparent" />
-            </div>
-            <div className="relative z-10 p-12 md:p-24 max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary-container text-on-secondary-container rounded-full mb-8">
-                <MaterialSymbol name="star" className="text-sm" filled />
-                <span className="font-label text-xs font-bold uppercase tracking-widest">
-                  Featured Event
-                </span>
+          {featured ? (
+            <div className="relative bg-surface-container-low rounded-xl overflow-hidden min-h-[520px] flex items-center group">
+              <div className="absolute inset-0 z-0">
+                <img
+                  alt={featured.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-40"
+                  src={featured.coverPicture}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-surface-container-low via-surface-container-low/80 to-transparent" />
               </div>
-              <h2 className="font-serif text-5xl md:text-7xl font-bold text-primary mb-6 leading-tight">
-                Holy Ghost Experience
-              </h2>
-              <p className="font-body text-xl text-on-surface-variant mb-10 leading-relaxed">
-                A dedicated night of intercession and prophetic worship. Join
-                Efua Black and the ministry team for an unforgettable encounter
-                with the Divine.
-              </p>
-              <div className="flex flex-wrap gap-12 mb-12">
-                <div>
-                  <span className="block font-label text-xs uppercase tracking-widest text-outline mb-1">
-                    Date
-                  </span>
-                  <span className="font-serif text-2xl italic text-primary">
-                    April 26, 2026
+              <div className="relative z-10 p-12 md:p-24 max-w-3xl">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary-container text-on-secondary-container rounded-full mb-8">
+                  <MaterialSymbol name="star" className="text-sm" filled />
+                  <span className="font-label text-xs font-bold uppercase tracking-widest">
+                    Featured Event
                   </span>
                 </div>
-                <div>
-                  <span className="block font-label text-xs uppercase tracking-widest text-outline mb-1">
-                    Venue
-                  </span>
-                  <span className="font-serif text-2xl italic text-primary">
-                    Word of Life, Assemblies of God - Anaji Takoradi
-                  </span>
-                </div>
-              </div>
-              <button
-                type="button"
-                className="bg-gradient-to-r from-primary to-primary-container text-on-primary px-10 py-5 rounded-lg font-label font-bold tracking-widest uppercase hover:opacity-90 transition-all flex items-center gap-4"
-              >
-                Secure Access
-                <MaterialSymbol name="arrow_forward" />
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* <section className="px-12 max-w-screen-2xl mx-auto mb-32">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="md:col-span-2 bg-surface-container-high p-10 rounded-xl flex flex-col justify-between min-h-[400px]">
-              <div>
-                <div className="flex justify-between items-start mb-8">
-                  <div className="text-left">
-                    <span className="font-serif text-5xl italic font-bold text-secondary">15</span>
-                    <span className="block font-label text-sm uppercase tracking-widest text-on-surface-variant">
-                      Nov 2024
+                <h2 className="font-serif text-5xl md:text-7xl font-bold text-primary mb-6 leading-tight">
+                  {featured.title}
+                </h2>
+                <p className="font-body text-xl text-on-surface-variant mb-8 leading-relaxed">
+                  {featured.description}
+                </p>
+                <div className="flex flex-wrap gap-12 mb-6">
+                  <div>
+                    <span className="block font-label text-xs uppercase tracking-widest text-outline mb-1">
+                      Date
+                    </span>
+                    <span className="font-serif text-2xl italic text-primary">
+                      {featured.eventDate}
                     </span>
                   </div>
-                  <span className="font-label text-xs font-bold uppercase tracking-widest text-on-secondary-container bg-secondary-container/30 px-3 py-1 rounded">
-                    London, UK
-                  </span>
+                  <div>
+                    <span className="block font-label text-xs uppercase tracking-widest text-outline mb-1">
+                      Venue
+                    </span>
+                    <span className="font-serif text-2xl italic text-primary">
+                      {featured.location}
+                    </span>
+                  </div>
                 </div>
-                <h3 className="font-serif text-4xl font-bold text-primary mb-4">
-                  Sovereign Grace Tour: Opening Night
-                </h3>
-                <p className="font-body text-on-surface-variant max-w-md">
-                  An intimate evening of storytelling and psalms at the historic Tabernacle Hall. Limited
-                  seating available for this spiritual journey.
+                <p className="font-label text-xs uppercase tracking-widest text-outline">
+                  {countByEvent.get(String(featured._id)) ?? 0} Registrations
                 </p>
+                <EventRegistrationForm eventId={String(featured._id)} eventTitle={featured.title} />
               </div>
+            </div>
+          ) : (
+            <div className="rounded-xl bg-surface-container-low p-10 text-center text-on-surface-variant">
+              No events have been published yet. Check back soon.
+            </div>
+          )}
+        </section>
 
-              <div className="pt-8">
-                <a className="text-secondary font-label font-bold uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all" href="#">
-                  View Details <MaterialSymbol name="chevron_right" />
-                </a>
-              </div>
+        {upcoming.length > 0 ? (
+          <section className="px-12 max-w-screen-2xl mx-auto mb-24">
+            <h3 className="mb-6 font-serif text-3xl italic text-primary">More Upcoming Events</h3>
+            <div className="grid gap-8 md:grid-cols-2">
+              {upcoming.map((event) => (
+                <article key={String(event._id)} className="rounded-xl bg-surface-container-low p-8">
+                  <h4 className="font-serif text-3xl text-primary">{event.title}</h4>
+                  <p className="mt-3 text-on-surface-variant">{event.description}</p>
+                  <p className="mt-4 text-sm uppercase tracking-widest text-outline">
+                    {event.eventDate} • {event.location}
+                  </p>
+                  <p className="mt-2 text-xs uppercase tracking-widest text-outline">
+                    {countByEvent.get(String(event._id)) ?? 0} Registrations
+                  </p>
+                  <EventRegistrationForm eventId={String(event._id)} eventTitle={event.title} />
+                </article>
+              ))}
             </div>
-            <div className="bg-surface-container-low p-10 rounded-xl flex flex-col justify-between border-b-4 border-secondary/20">
-              <div>
-                <div className="mb-8">
-                  <span className="font-serif text-5xl italic font-bold text-primary-container">02</span>
-                  <span className="block font-label text-sm uppercase tracking-widest text-on-surface-variant">
-                    Dec 2024
-                  </span>
-                </div>
-                <h3 className="font-serif text-3xl font-bold text-primary mb-4">Worship &amp; The Word Workshop</h3>
-                <p className="font-body text-on-surface-variant">
-                  A specialized session for ministry leaders and worship teams on the theology of song.
-                </p>
-              </div>
-              <div className="pt-8">
-                <a className="text-secondary font-label font-bold uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all" href="#">
-                  Register <MaterialSymbol name="chevron_right" />
-                </a>
-              </div>
-            </div>
-            
-          </div>
-        </section> */}
+          </section>
+        ) : null}
 
         <section className="px-12 max-w-screen-2xl mx-auto">
           <div className="bg-tertiary-fixed p-16 md:p-24 rounded-xl text-center flex flex-col items-center">
