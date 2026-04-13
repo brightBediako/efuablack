@@ -19,14 +19,14 @@ const songs = [
     alt: "Abstract musical cover art with swirling purple and gold light trails against a dark deep velvet background",
   },
   {
-    title: "Grace Found Me",
-    year: "2022",
+    title: "Me Hia Wo",
+    year: "2024",
     img: "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/4_cjztqn.jpg",
     alt: "Modern minimalist cover art showing a single spotlight beam cutting through a misty violet void onto a golden stone",
   },
   {
     title: "Amazing God",
-    year: "2022",
+    year: "2023",
     img: "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/5_derlqf.jpg",
     alt: "Atmospheric cover art featuring a dark starry sky reflecting in a still lake with a subtle purple horizon glow",
   },
