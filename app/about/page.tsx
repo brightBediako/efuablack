@@ -24,8 +24,9 @@ export default function AboutPage() {
                 About Efua Black
               </h1>
               <p className="mt-8 text-lg md:text-xl text-on-surface-variant max-w-lg leading-relaxed font-body">
-                A voice seasoned with grace, a heart anchored in worship. Efua Black is more than an
-                artist; she is a vessel of divine storytelling.
+                A voice seasoned with grace, a heart anchored in worship. Efua
+                Black is more than an artist; she is a vessel of divine
+                storytelling.
               </p>
             </div>
             <div className="relative">
@@ -33,7 +34,7 @@ export default function AboutPage() {
                 <img
                   alt="Elegant portrait of Efua Black with a serene expression, soft lighting, warm purple and gold studio background"
                   className="w-full h-full object-cover rounded-xl shadow-2xl relative z-10 scale-105 md:translate-x-4 md:-translate-y-4"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_sLjLLSgdj-2ReUt1rSTMush2efTTTbbrNksUE3vLNjUetVF7o4xK0dnPm4C-JMB1deyHDaU6h8T6c-OM_vt1XNpESWCC3XRD9WiJ2rlEwdfP72pvUjauMoDpMaCmsJPYKx76SAq292Y-omRwjL7RbqNUXDomIw-u1k5zFGPw-Qv1KQemm0VqQwzh7BW7BTxsrcnvY_P_0ivsLKfNmIvJKnrqcarodoYGhoYn7xN4GC9QnXrX3V72klyvwUuNJCmeAxQvdadjnBg"
+                  src="https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050989/2_ue0np8.jpg"
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 w-48 h-48 bg-tertiary-fixed rounded-full blur-3xl opacity-40 -z-0" />
@@ -52,28 +53,32 @@ export default function AboutPage() {
               <div className="md:col-span-7 space-y-12">
                 <div className="space-y-6 text-on-surface-variant text-lg leading-relaxed font-body">
                   <p>
-                    Born into a lineage of worshippers, Efua&apos;s journey began in the humble pews of
-                    her childhood church. It wasn&apos;t just the melody that captured her, but the
-                    transformative power of the Message behind the music. Her faith is the foundation
-                    upon which every note is built.
+                    Born into a lineage of worshippers, Efua&apos;s journey
+                    began in the humble pews of her childhood church. It
+                    wasn&apos;t just the melody that captured her, but the
+                    transformative power of the Message behind the music. Her
+                    faith is the foundation upon which every note is built.
                   </p>
                   <p>
-                    Over the past decade, she has navigated the complexities of the modern music
-                    industry without compromising the purity of her ministry. Her music career has been
-                    a testament to patience and divine timing, evolving from local praise leader to a
-                    globally recognized voice in contemporary Gospel.
+                    Over the past decade, she has navigated the complexities of
+                    the modern music industry without compromising the purity of
+                    her ministry. Her music career has been a testament to
+                    patience and divine timing, evolving from local praise
+                    leader to a globally recognized voice in contemporary
+                    Gospel.
                   </p>
                   <div className="p-8 bg-surface-container-lowest rounded-xl border-l-4 border-secondary shadow-sm">
                     <p className="italic font-serif text-2xl text-primary leading-relaxed">
-                      &quot;I don&apos;t sing to be heard; I sing so that He can be known. Every performance is
-                      an altar.&quot;
+                      &quot;I don&apos;t sing to be heard; I sing so that He can
+                      be known. Every performance is an altar.&quot;
                     </p>
                   </div>
                   <p>
-                    From the intimate settings of small-town revivals to the grand stages of
-                    international festivals, Efua maintains a singular focus: to usher listeners into a
-                    personal encounter with the Divine. Her songwriting reflects the raw, honest dialogue
-                    of a soul in pursuit of its Creator.
+                    From the intimate settings of small-town revivals to the
+                    grand stages of international festivals, Efua maintains a
+                    singular focus: to usher listeners into a personal encounter
+                    with the Divine. Her songwriting reflects the raw, honest
+                    dialogue of a soul in pursuit of its Creator.
                   </p>
                 </div>
               </div>
@@ -84,7 +89,9 @@ export default function AboutPage() {
         <section className="py-32 bg-surface">
           <div className="max-w-7xl mx-auto px-8 md:px-24">
             <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
-              <h2 className="text-4xl font-serif text-primary">Notable Collaborations</h2>
+              <h2 className="text-4xl font-serif text-primary">
+                Notable Collaborations
+              </h2>
               <div className="h-px flex-grow mx-8 bg-outline-variant opacity-30 hidden md:block" />
               <span className="font-label text-on-surface-variant uppercase tracking-widest text-sm">
                 Harmonizing with Spirits
@@ -93,22 +100,22 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  title: "Minister David G.",
-                  sub: 'Single: "Holy Ground"',
-                  body: "A powerful atmospheric worship collaboration that topped gospel charts for twelve weeks.",
-                  img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAQ4iF-LjxuFSmq5nbnK2MUjr3Lx1T8-ejv4XU-R7D2sr3JRCufX_583lcUMug8fRHKeL9iq7DJel6Fv4amvVBm-yoyMloSCMn1KsjUtdC48owM-qO-klOHpg5X0kUnL9p9G1yn5_Yz3VfIDIJHwVCtMlD0mTaG5DcUKAok5eabCy5xlnzknSR56nWoB-8fz1lwyOcZ96tL5c9TMSUEX45mCT-xV9KmVvURS2_1bKpUzxDSgs5Guq-DiLm8L7_4i_yj4DPdm4uKHZ0",
+                  title: "Efua Black Ft. Diana Hamilton.",
+                  sub: 'Single: "TESTIFY"',
+                  body: "TESTIFY is a powerful gospel song by Efua Black, featuring the renowned Diana Hamilton.",
+                  img: "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpg",
                 },
                 {
-                  title: "The Grace Choir",
-                  sub: 'Album: "Voices of Zion"',
-                  body: "Lending her signature mezzo-soprano to the lead tracks of the year's most acclaimed choral project.",
-                  img: "https://lh3.googleusercontent.com/aida-public/AB6AXuASxyCbKJoMFifAeMhYHFL6omqgMlsKskhKzidzlhlXK2bSEEQgY58IpnJUQ3zjzOoJHP3LPjh5HiT4ZJKMNIctrMn0rKeBxHFQPxPZi1o_cWUHFyMgd7rI12JqPYnIIM3PKf39-2IFJ8bfZK7NoaMLsIhTSEpZAzUU6rjivk9mRSPuyMsUZGlYVN2u4aln4FEqnnUwnzF51i7reoc4zHpHrq_N9PuJVh9KuwP5blRyGOggOe1ZDPmeltVX3VEpXTHbFynRrpwbvD0",
+                  title: "Efua Black ft. Evang. Amy Newman.",
+                  sub: 'Single: "Ma Metse Biara Nyame do me"',
+                  body: "Ma Metse Biara Nyame do me is a powerful gospel song by Efua Black, featuring the renowned Evang. Amy Newman.",
+                  img: "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050992/10_zp5mml.jpg",
                 },
                 {
-                  title: "Sarah J. Worship",
-                  sub: 'Live Concert: "The Awakening"',
-                  body: "A memorable duet that defined the worship experience for thousands at the National Cathedral.",
-                  img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBkrWnPcw_P6ljBHkpHkwPihoAl0J9RIXoHeNlGQfLTNcuMk90QYcTXeGOKQefFhUupBWrS7insYkvdAHzUhxnU7_ddH4xN9vahRjHZIXa-qR3LNsDRusG51OuB0Pm7ohsBoFBs_J7i7ylVNx5rYuqrzDHiu02pFlm_0uUC-cuVnFniajpOq10z_UaAtwc-v7hPHKFW0dRIc0OEkO2_l4-GUpUMpysQhTAPJRV80izcjkRcI-rliLXLPrXnZgqf5fgQJ4rk9VbhRro",
+                  title: "Efua Black Ft. Elder Mireku.",
+                  sub: 'Single: "Ahengua N’enim"',
+                  body: "Experience a profound time of worship with Efua Black and Elder Mireku in their soul-stirring collaboration, 'Ahengua N'enim.'",
+                  img: "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776070578/597909340_1180256314303242_8796355806506340299_n_nw8ljt.jpg",
                 },
               ].map((c) => (
                 <div
@@ -117,7 +124,11 @@ export default function AboutPage() {
                 >
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-16 h-16 rounded-full overflow-hidden bg-outline-variant">
-                      <img alt="" className="w-full h-full object-cover" src={c.img} />
+                      <img
+                        alt=""
+                        className="w-full h-full object-cover"
+                        src={c.img}
+                      />
                     </div>
                     <div>
                       <h3 className="font-serif text-xl text-primary group-hover:text-tertiary-fixed transition-colors">
@@ -137,7 +148,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="py-32 bg-surface-container-low overflow-hidden">
+        {/* <section className="py-32 bg-surface-container-low overflow-hidden">
           <div className="max-w-7xl mx-auto px-8 md:px-24">
             <h2 className="text-5xl font-serif italic text-primary mb-12 text-center md:text-left">
               Captured Moments
@@ -150,7 +161,9 @@ export default function AboutPage() {
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSw5iP5xKzFKi71p3bMZVT5qy3q7_HoQObhTH6Kzb8w2JGwnFhyfVQZVCwPLEgc0A9lbRpMBAIJoFq9k5Yp_wEJSvF-jiX_B1UNp4tWJPvftYArDBd2wyUREO1werxXPswFkxOxmrZ3iHoUcl71HGbSfGTyO3lxwAAle7ywGsBugKtRPnXkGhBqnb_9XFUqiuKvONEDAN-82R0YjPbrU6BqlxcbV--FyofmgyPdOe8f7Ahr78qmO0Eo7dxNmnrFaYhy7wFFlnMcAA"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-                  <p className="text-white font-serif italic text-xl">Live at the National Stadium</p>
+                  <p className="text-white font-serif italic text-xl">
+                    Live at the National Stadium
+                  </p>
                 </div>
               </div>
               <div className="col-span-2 row-span-1 relative group overflow-hidden rounded-xl">
@@ -176,7 +189,7 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className="py-40 bg-primary relative overflow-hidden">
           <div className="absolute inset-0 opacity-20 pointer-events-none">
@@ -187,8 +200,9 @@ export default function AboutPage() {
               Bring the Ministry to Your Sanctuary
             </h2>
             <p className="text-lg md:text-xl text-on-primary opacity-80 mb-12 font-body max-w-2xl mx-auto">
-              Whether it&apos;s a worship night, a conference, or a personal ministry session, Efua is
-              dedicated to bringing a presence-centered experience to your event.
+              Whether it&apos;s a worship night, a conference, or a personal
+              ministry session, Efua is dedicated to bringing a
+              presence-centered experience to your event.
             </p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
               <Link
@@ -198,10 +212,10 @@ export default function AboutPage() {
                 Book Efua for Ministry
               </Link>
               <Link
-                href="/contact?topic=media-kit"
+                href="https://www.youtube.com/@EfuaBlack/videos"
                 className="px-10 py-5 text-on-primary font-label uppercase tracking-widest hover:text-secondary-fixed transition-colors"
               >
-                Download Media Kit
+                Listen to Efua&apos;s Music
               </Link>
             </div>
           </div>
