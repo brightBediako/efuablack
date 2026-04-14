@@ -44,7 +44,9 @@ export function MediaGalleryClient({ items }: { items: MediaGalleryItem[] }) {
                 src={item.picture || FALLBACK_IMAGE}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 pointer-events-none">
-                <h3 className="font-headline text-2xl text-on-primary italic">{item.title}</h3>
+                <h3 className="font-headline text-2xl text-on-primary italic">
+                  {item.description || item.title}
+                </h3>
               </div>
             </button>
           ))}
@@ -92,8 +94,10 @@ export function MediaGalleryClient({ items }: { items: MediaGalleryItem[] }) {
               />
             )}
             <div className="mt-8 text-center">
-              <h4 className="font-headline text-3xl text-on-primary italic">{active?.title}</h4>
-              <p className="text-on-primary-container/60 font-body mt-2">{active?.description}</p>
+              <h4 className="font-headline text-3xl text-on-primary italic">
+                {active?.description || active?.title}
+              </h4>
+              <p className="text-on-primary-container/60 font-body mt-2">{active?.title}</p>
             </div>
           </div>
         </div>

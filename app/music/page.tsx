@@ -31,25 +31,46 @@ export default async function MusicPage() {
         <section className="mb-32 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-8 bg-surface-container-low overflow-hidden relative group">
-              <div className="aspect-video w-full bg-primary overflow-hidden">
-                <img
-                  alt={`Featured track ${featured?.title ?? "Efua Black"}`}
-                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000"
-                  src={featured?.coverPicture ?? "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpg"}
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <button
-                    type="button"
-                    className="w-24 h-24 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-2xl active:scale-90 transition-transform"
-                  >
-                    <MaterialSymbol
-                      name="play_arrow"
-                      className="text-5xl"
-                      filled
-                    />
-                  </button>
+              {featured?.youtubeMusic ? (
+                <Link
+                  href={featured.youtubeMusic}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="aspect-video w-full bg-primary overflow-hidden block"
+                >
+                  <img
+                    alt={`Featured track ${featured?.title ?? "Efua Black"}`}
+                    className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000"
+                    src={featured?.coverPicture ?? "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpg"}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="w-24 h-24 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-2xl active:scale-90 transition-transform">
+                      <MaterialSymbol
+                        name="play_arrow"
+                        className="text-5xl"
+                        filled
+                      />
+                    </span>
+                  </div>
+                </Link>
+              ) : (
+                <div className="aspect-video w-full bg-primary overflow-hidden">
+                  <img
+                    alt={`Featured track ${featured?.title ?? "Efua Black"}`}
+                    className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000"
+                    src={featured?.coverPicture ?? "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpg"}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="w-24 h-24 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-2xl">
+                      <MaterialSymbol
+                        name="play_arrow"
+                        className="text-5xl"
+                        filled
+                      />
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             <div className="lg:col-span-4 lg:pl-8">
               <div className="bg-tertiary-fixed p-1 inline-block mb-4">
@@ -114,23 +135,41 @@ export default async function MusicPage() {
             {songs.map((s) => (
               <div key={s.title} className="group">
                 <div className="relative bg-surface-container-low overflow-hidden aspect-square mb-6">
-                  <img
-                    alt={s.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                    src={s.coverPicture}
-                  />
-                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <button
-                      type="button"
-                      className="w-16 h-16 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xl active:scale-90 transition-transform"
-                    >
-                      <MaterialSymbol
-                        name="play_arrow"
-                        className="text-3xl"
-                        filled
+                  {s.youtubeMusic ? (
+                    <Link href={s.youtubeMusic} target="_blank" rel="noopener noreferrer" className="block h-full w-full">
+                      <img
+                        alt={s.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                        src={s.coverPicture}
                       />
-                    </button>
-                  </div>
+                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span className="w-16 h-16 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xl active:scale-90 transition-transform">
+                          <MaterialSymbol
+                            name="play_arrow"
+                            className="text-3xl"
+                            filled
+                          />
+                        </span>
+                      </div>
+                    </Link>
+                  ) : (
+                    <>
+                      <img
+                        alt={s.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                        src={s.coverPicture}
+                      />
+                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span className="w-16 h-16 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xl">
+                          <MaterialSymbol
+                            name="play_arrow"
+                            className="text-3xl"
+                            filled
+                          />
+                        </span>
+                      </div>
+                    </>
+                  )}
                 </div>
                 <div className="flex justify-between items-start">
                   <div>

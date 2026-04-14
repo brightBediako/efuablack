@@ -62,7 +62,11 @@
 }
 
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
 }
 
 .glass-nav {
@@ -73,7 +77,7 @@
 .hero-gradient {
   background:
     linear-gradient(to bottom, rgba(15, 0, 25, 0.4), rgba(15, 0, 25, 0.8)),
-    url("https://lh3.googleusercontent.com/aida-public/AB6AXuAILrFs4ECV87-Hs35Gj96ZFW7Loadc2SzMTA6Z_B9GObdNxg7XgWsKiN0PsNWOAZLZngX3LL1uqU2PvIIi2HwdkyT2knBV7k01dFcQv4Y5qsHltkkEkfTsonypBCYcfdXR0z0YglDTVc-sQAYjWD1B4oRJykVtaineRvLgpKi_kBWIQQsIe315hUvBoa5Pg6F7X7S919zhtuihMMmhhq20tl_22-OQ9sRvMPMxSHGePRHBqr3jD14RMWa_HWRZgngyiM-AnLQD7Nk")
+    url("https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpg")
       center / cover;
 }
 
