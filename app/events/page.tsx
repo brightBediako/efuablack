@@ -49,7 +49,7 @@ export default async function EventsPage() {
           </div>
         </header>
 
-        <section className="px-12 max-w-screen-2xl mx-auto mb-32">
+        <section className="max-w-screen-2xl mx-auto mb-20 px-0 sm:px-4 md:px-8 lg:px-12 sm:mb-24 md:mb-32">
           {featured ? (
             <div className="relative bg-surface-container-low rounded-xl overflow-hidden min-h-[520px] flex items-center group">
               <div className="absolute inset-0 z-0">
@@ -60,33 +60,33 @@ export default async function EventsPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-surface-container-low via-surface-container-low/80 to-transparent" />
               </div>
-              <div className="relative z-10 p-12 md:p-24 max-w-3xl">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary-container text-on-secondary-container rounded-full mb-8">
+              <div className="relative z-10 w-full max-w-3xl p-5 sm:p-8 md:p-16 lg:p-24">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-secondary-container text-on-secondary-container rounded-full mb-5 sm:mb-8">
                   <MaterialSymbol name="star" className="text-sm" filled />
                   <span className="font-label text-xs font-bold uppercase tracking-widest">
                     Featured Event
                   </span>
                 </div>
-                <h2 className="font-serif text-5xl md:text-7xl font-bold text-primary mb-6 leading-tight">
+                <h2 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-primary mb-4 sm:mb-6 leading-tight break-words">
                   {featured.title}
                 </h2>
-                <p className="font-body text-xl text-on-surface-variant mb-8 leading-relaxed">
+                <p className="font-body text-base sm:text-lg md:text-xl text-on-surface-variant mb-6 sm:mb-8 leading-relaxed break-words">
                   {featured.description}
                 </p>
-                <div className="flex flex-wrap gap-12 mb-6">
-                  <div>
+                <div className="grid grid-cols-1 gap-4 sm:gap-8 mb-6 sm:grid-cols-2">
+                  <div className="min-w-0">
                     <span className="block font-label text-xs uppercase tracking-widest text-outline mb-1">
                       Date
                     </span>
-                    <span className="font-serif text-2xl italic text-primary">
+                    <span className="font-serif text-xl sm:text-2xl italic text-primary break-words">
                       {featured.eventDate}
                     </span>
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <span className="block font-label text-xs uppercase tracking-widest text-outline mb-1">
                       Venue
                     </span>
-                    <span className="font-serif text-2xl italic text-primary">
+                    <span className="font-serif text-xl sm:text-2xl italic text-primary break-words">
                       {featured.location}
                     </span>
                   </div>
@@ -105,14 +105,14 @@ export default async function EventsPage() {
         </section>
 
         {upcoming.length > 0 ? (
-          <section className="px-12 max-w-screen-2xl mx-auto mb-24">
+          <section className="max-w-screen-2xl mx-auto mb-24 px-0 sm:px-4 md:px-8 lg:px-12">
             <h3 className="mb-6 font-serif text-3xl italic text-primary">More Upcoming Events</h3>
             <div className="grid gap-8 md:grid-cols-2">
               {upcoming.map((event) => (
-                <article key={String(event._id)} className="rounded-xl bg-surface-container-low p-8">
-                  <h4 className="font-serif text-3xl text-primary">{event.title}</h4>
-                  <p className="mt-3 text-on-surface-variant">{event.description}</p>
-                  <p className="mt-4 text-sm uppercase tracking-widest text-outline">
+                <article key={String(event._id)} className="rounded-xl bg-surface-container-low p-5 sm:p-8">
+                  <h4 className="font-serif text-2xl sm:text-3xl text-primary break-words">{event.title}</h4>
+                  <p className="mt-3 text-on-surface-variant break-words">{event.description}</p>
+                  <p className="mt-4 text-sm uppercase tracking-widest text-outline break-words">
                     {event.eventDate} • {event.location}
                   </p>
                   <p className="mt-2 text-xs uppercase tracking-widest text-outline">
