@@ -17,7 +17,8 @@ export function EventRegistrationForm({ eventId, eventTitle }: Props) {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
     setLoading(true);
     setError(null);
@@ -50,7 +51,7 @@ export function EventRegistrationForm({ eventId, eventTitle }: Props) {
         return;
       }
 
-      e.currentTarget.reset();
+      form.reset();
       setSuccess(`You're registered for ${eventTitle}.`);
       setLoading(false);
     } catch {

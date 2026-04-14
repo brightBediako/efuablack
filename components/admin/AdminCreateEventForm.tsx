@@ -43,18 +43,22 @@ export function AdminCreateEventForm() {
     setLoading(true);
     setMessage(null);
 
+    const coverPictureUrl = getFormString(formData, "coverPictureUrl").trim();
     const coverFile = formData.get("coverFile");
-    if (!(coverFile instanceof File) || coverFile.size === 0) {
-      setMessage("Please select a cover image.");
-      setLoading(false);
-      return;
-    }
 
     let coverPicture: string;
-    try {
-      coverPicture = await uploadCoverToCloudinary(coverFile);
-    } catch (err) {
-      setMessage(err instanceof Error ? err.message : "Upload failed.");
+    if (coverPictureUrl) {
+      coverPicture = coverPictureUrl;
+    } else if (coverFile instanceof File && coverFile.size > 0) {
+      try {
+        coverPicture = await uploadCoverToCloudinary(coverFile);
+      } catch (err) {
+        setMessage(err instanceof Error ? err.message : "Upload failed.");
+        setLoading(false);
+        return;
+      }
+    } else {
+      setMessage("Please upload a cover image or paste a Cloudinary URL.");
       setLoading(false);
       return;
     }
@@ -153,7 +157,16 @@ export function AdminCreateEventForm() {
           type="file"
           accept="image/*"
           className={`${fieldClass} file:cursor-pointer file:border-0 file:bg-secondary/20 file:py-2 file:text-sm file:font-semibold file:text-secondary file:hover:bg-secondary/25`}
-          required
+        />
+        <label htmlFor="event-coverPictureUrl" className="text-xs font-label font-semibold uppercase tracking-widest text-secondary">
+          Or paste Cloudinary URL
+        </label>
+        <input
+          id="event-coverPictureUrl"
+          name="coverPictureUrl"
+          type="url"
+          placeholder="https://res.cloudinary.com/..."
+          className={fieldClass}
         />
         <p className="text-xs font-body text-on-surface-variant">Images only. Stored in Cloudinary.</p>
       </div>

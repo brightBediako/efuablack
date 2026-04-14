@@ -10,6 +10,9 @@ type MediaGalleryItem = {
   picture: string;
 };
 
+const FALLBACK_IMAGE =
+  "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpg";
+
 export function MediaGalleryClient({ items }: { items: MediaGalleryItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const safeItems = items.length
@@ -19,8 +22,7 @@ export function MediaGalleryClient({ items }: { items: MediaGalleryItem[] }) {
           id: "placeholder",
           title: "Gallery Coming Soon",
           description: "New moments will appear here soon.",
-          picture:
-            "https://res.cloudinary.com/dkg8ovask/image/upload/q_auto/f_auto/v1776050990/1_di4sq2.jpg",
+          picture: FALLBACK_IMAGE,
         },
       ];
   const active = openIndex === null ? null : safeItems[openIndex];
@@ -39,7 +41,7 @@ export function MediaGalleryClient({ items }: { items: MediaGalleryItem[] }) {
               <img
                 alt={item.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                src={item.picture}
+                src={item.picture || FALLBACK_IMAGE}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 pointer-events-none">
                 <h3 className="font-headline text-2xl text-on-primary italic">{item.title}</h3>
@@ -76,11 +78,19 @@ export function MediaGalleryClient({ items }: { items: MediaGalleryItem[] }) {
         </div>
         <div className="flex-grow flex items-center justify-center p-12">
           <div className="max-w-5xl w-full">
-            <img
-              alt={active?.title ?? "Lightbox image"}
-              className="w-full object-contain max-h-[716px]"
-              src={active?.picture ?? ""}
-            />
+            {active?.picture ? (
+              <img
+                alt={active.title}
+                className="w-full object-contain max-h-[716px]"
+                src={active.picture}
+              />
+            ) : (
+              <img
+                alt={active?.title ?? "Lightbox image"}
+                className="w-full object-contain max-h-[716px]"
+                src={FALLBACK_IMAGE}
+              />
+            )}
             <div className="mt-8 text-center">
               <h4 className="font-headline text-3xl text-on-primary italic">{active?.title}</h4>
               <p className="text-on-primary-container/60 font-body mt-2">{active?.description}</p>

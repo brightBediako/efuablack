@@ -19,16 +19,34 @@ export async function registerForEvent(input: EventRegistrationInput) {
   if (!Types.ObjectId.isValid(input.eventId)) {
     throw new Error("Invalid event id.");
   }
-  const event = await Event.findById(input.eventId).lean();
+  const eventObjectId = new Types.ObjectId(input.eventId);
+  const normalizedEmail = input.email.trim().toLowerCase();
+  const normalizedPhone = input.phone.trim();
+
+  const event = await Event.findById(eventObjectId).lean();
   if (!event) {
     throw new Error("Event not found.");
   }
-  return EventRegistration.create({
-    eventId: new Types.ObjectId(input.eventId),
+  const duplicate = await EventRegistration.findOne({
+    eventId: eventObjectId,
+    $or: [{ email: normalizedEmail }, { phone: normalizedPhone }],
+  })
+    .select({ email: 1, phone: 1 })
+    .lean();
+  if (duplicate) {
+    if (duplicate.email === normalizedEmail) {
+      throw new Error("Email already registered for this event.");
+    }
+    throw new Error("Phone already registered for this event.");
+  }
+
+  const registration = await EventRegistration.create({
+    eventId: eventObjectId,
     name: input.name,
-    email: input.email,
-    phone: input.phone,
+    email: normalizedEmail,
+    phone: normalizedPhone,
   });
+  return { registration, event };
 }
 
 export async function updateEventById(id: string, input: EventCreateInput) {

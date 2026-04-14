@@ -5,6 +5,7 @@ import { SubscribeForm } from "@/components/forms/SubscribeForm";
 import { MaterialSymbol } from "@/components/MaterialSymbol";
 import { SiteNav } from "@/components/SiteNav";
 import { defaultDescription } from "@/lib/site-config";
+import { listEvents } from "@/services/eventService";
 
 export const metadata: Metadata = {
   title: "Gospel Musician & Worship Minister",
@@ -14,7 +15,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+function getEventDateParts(rawDate: string): { month: string; day: string } {
+  const parsed = new Date(rawDate);
+  if (!Number.isNaN(parsed.getTime())) {
+    return {
+      month: parsed.toLocaleString("en-US", { month: "short" }).toUpperCase(),
+      day: String(parsed.getDate()),
+    };
+  }
+  const parts = rawDate.trim().split(/\s+/);
+  return {
+    month: (parts[0] ?? "TBD").replace(/[^a-z]/gi, "").slice(0, 3).toUpperCase() || "TBD",
+    day: (parts[1] ?? "—").replace(/[^0-9]/g, "") || "—",
+  };
+}
+
+export default async function HomePage() {
+  const events = await listEvents();
+  const invitationEvents = events.slice(0, 3);
+
   return (
     <>
       <SiteNav shell="home" active="home" />
@@ -213,33 +232,38 @@ export default function HomePage() {
               </p>
             </div>
             <div className="space-y-4">
-              {[
-                { m: "APRIL", d: "26", title: "Holy Ghost Experience", loc: "Word of Life - Assemlies of God, Anaji Takoradi", cta: "Reserve Seat" },
-              ].map((ev) => (
+              {invitationEvents.length > 0 ? invitationEvents.map((ev) => {
+                const date = getEventDateParts(ev.eventDate);
+                return (
                 <div
-                  key={ev.title}
+                  key={String(ev._id)}
                   className="group flex flex-col md:flex-row items-center justify-between p-8 bg-surface-container-high hover:bg-surface-container-highest transition-colors"
                 >
                   <div className="flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
                     <div className="font-headline text-5xl text-secondary">
-                      <span className="block">{ev.m}</span>
-                      <span className="block font-bold">{ev.d}</span>
+                      <span className="block">{date.month}</span>
+                      <span className="block font-bold">{date.day}</span>
                     </div>
                     <div>
                       <h3 className="font-headline text-3xl text-primary mb-1">{ev.title}</h3>
-                      <p className="font-body text-on-surface-variant">{ev.loc}</p>
+                      <p className="font-body text-on-surface-variant">{ev.location}</p>
                     </div>
                   </div>
                   <div className="mt-8 md:mt-0">
-                    <button
-                      type="button"
+                    <Link
+                      href="/events"
                       className="font-label text-primary font-bold tracking-widest uppercase border-b-2 border-primary/20 hover:border-secondary transition-colors pb-2"
                     >
-                      {ev.cta}
-                    </button>
+                      Register
+                    </Link>
                   </div>
                 </div>
-              ))}
+                );
+              }) : (
+                <div className="p-8 bg-surface-container-high text-center text-on-surface-variant">
+                  Upcoming events will appear here soon.
+                </div>
+              )}
             </div>
           </div>
         </section>
