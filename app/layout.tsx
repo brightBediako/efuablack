@@ -18,6 +18,11 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   title: {
     default: siteName,
     template: `%s | ${siteName}`,
