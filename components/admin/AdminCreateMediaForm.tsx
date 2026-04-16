@@ -43,18 +43,22 @@ export function AdminCreateMediaForm() {
     setLoading(true);
     setMessage(null);
 
+    const pictureUrl = getFormString(formData, "pictureUrl").trim();
     const pictureFile = formData.get("pictureFile");
-    if (!(pictureFile instanceof File) || pictureFile.size === 0) {
-      setMessage("Please select a picture.");
-      setLoading(false);
-      return;
-    }
 
     let picture: string;
-    try {
-      picture = await uploadPictureToCloudinary(pictureFile);
-    } catch (err) {
-      setMessage(err instanceof Error ? err.message : "Upload failed.");
+    if (pictureUrl) {
+      picture = pictureUrl;
+    } else if (pictureFile instanceof File && pictureFile.size > 0) {
+      try {
+        picture = await uploadPictureToCloudinary(pictureFile);
+      } catch (err) {
+        setMessage(err instanceof Error ? err.message : "Upload failed.");
+        setLoading(false);
+        return;
+      }
+    } else {
+      setMessage("Please upload an image or paste a Cloudinary URL.");
       setLoading(false);
       return;
     }
@@ -130,7 +134,16 @@ export function AdminCreateMediaForm() {
           type="file"
           accept="image/*"
           className={`${fieldClass} file:cursor-pointer file:border-0 file:bg-secondary/20 file:py-2 file:text-sm file:font-semibold file:text-secondary file:hover:bg-secondary/25`}
-          required
+        />
+        <label htmlFor="media-pictureUrl" className="text-xs font-label font-semibold uppercase tracking-widest text-secondary">
+          Or paste Cloudinary URL
+        </label>
+        <input
+          id="media-pictureUrl"
+          name="pictureUrl"
+          type="url"
+          placeholder="https://res.cloudinary.com/..."
+          className={fieldClass}
         />
         <p className="text-xs font-body text-on-surface-variant">Images only. Stored in Cloudinary.</p>
       </div>

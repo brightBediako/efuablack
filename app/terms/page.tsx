@@ -17,13 +17,21 @@ export default function TermsPage() {
         <p className="text-on-surface-variant text-sm mb-10">Last updated: March 2026</p>
         <div className="space-y-6 text-on-surface-variant leading-relaxed">
           <p>
-            These Terms of Service govern your use of this website. A complete terms document will be
-            published before the site goes live; this page is a placeholder so footer links resolve
-            correctly.
+            These Terms of Service govern your use of this website and its forms, media, and content.
+            By using this site, you agree to use it lawfully and not interfere with normal operations.
           </p>
           <p>
-            Content, imagery, and recordings on this site are protected by applicable copyright and
-            trademark laws. Do not use materials without permission.
+            Content, imagery, recordings, and brand assets on this site are protected by copyright and
+            related laws. You may not copy, republish, or commercially use site materials without written
+            permission from Efua Black Ministry.
+          </p>
+          <p>
+            Submitting a booking or contact form does not create a binding engagement. Ministry bookings
+            are confirmed only after direct approval and written confirmation from our team.
+          </p>
+          <p>
+            We may update these terms from time to time. Continued use of the website after updates means
+            you accept the revised terms.
           </p>
           <p>
             Questions?{" "}

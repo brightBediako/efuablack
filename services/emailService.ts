@@ -2,6 +2,7 @@ import nodemailer from "nodemailer";
 import { getEmailFrom, getNotifyEmail, getSmtpConfig, isSmtpConfigured } from "@/config/env";
 import type { BookingDoc } from "@/models/Booking";
 import type { ContactDoc } from "@/models/Contact";
+import type { EventRegistrationDoc } from "@/models/EventRegistration";
 
 function getTransport() {
   if (!isSmtpConfigured()) return null;
@@ -26,14 +27,23 @@ async function send(options: {
     console.warn("[email] SMTP not configured; skipped:", options.subject);
     return { sent: false, skipped: true };
   }
-  await transport.sendMail({
-    from: `"Efua Black" <${from}>`,
-    to: options.to,
-    subject: options.subject,
-    text: options.text,
-    html: options.html,
-  });
-  return { sent: true };
+  try {
+    await transport.sendMail({
+      from: `"Efua Black" <${from}>`,
+      to: options.to,
+      subject: options.subject,
+      text: options.text,
+      html: options.html,
+    });
+    return { sent: true };
+  } catch (e) {
+    console.error("[email] send failure", {
+      to: options.to,
+      subject: options.subject,
+      error: e instanceof Error ? e.message : "unknown",
+    });
+    throw e;
+  }
 }
 
 export async function notifyBookingToAdmin(doc: BookingDoc): Promise<void> {
@@ -170,6 +180,73 @@ export async function sendSubscriberWelcome(email: string, source?: string): Pro
   await send({
     to: email,
     subject: "Welcome — you're on the list",
+    text,
+    html,
+  });
+}
+
+export async function notifyEventRegistrationToAdmin(options: {
+  registration: EventRegistrationDoc;
+  eventTitle: string;
+  eventDate: string;
+  eventLocation: string;
+}): Promise<void> {
+  const notify = getNotifyEmail();
+  const text = [
+    `New event registration for ${options.eventTitle}`,
+    "",
+    `Name: ${options.registration.name}`,
+    `Email: ${options.registration.email}`,
+    `Phone: ${options.registration.phone}`,
+    `Event date: ${options.eventDate}`,
+    `Location: ${options.eventLocation}`,
+  ].join("\n");
+  const html = `
+    <h2>New event registration</h2>
+    <p><strong>Event:</strong> ${escapeHtml(options.eventTitle)}<br/>
+    <strong>Date:</strong> ${escapeHtml(options.eventDate)}<br/>
+    <strong>Location:</strong> ${escapeHtml(options.eventLocation)}</p>
+    <p><strong>Name:</strong> ${escapeHtml(options.registration.name)}<br/>
+    <strong>Email:</strong> ${escapeHtml(options.registration.email)}<br/>
+    <strong>Phone:</strong> ${escapeHtml(options.registration.phone)}</p>
+  `;
+  await send({
+    to: notify,
+    subject: `[Efua Black] Event registration: ${options.eventTitle}`,
+    text,
+    html,
+  });
+}
+
+export async function sendEventRegistrationConfirmationToUser(options: {
+  registration: EventRegistrationDoc;
+  eventTitle: string;
+  eventDate: string;
+  eventLocation: string;
+}): Promise<void> {
+  const text = [
+    `Dear ${options.registration.name},`,
+    "",
+    `Thank you for registering for ${options.eventTitle}.`,
+    `Date: ${options.eventDate}`,
+    `Location: ${options.eventLocation}`,
+    "",
+    "We look forward to welcoming you.",
+    "",
+    "Warm regards,",
+    "Efua Black Ministry",
+  ].join("\n");
+  const html = `
+    <p>Dear ${escapeHtml(options.registration.name)},</p>
+    <p>Thank you for registering for <strong>${escapeHtml(options.eventTitle)}</strong>.</p>
+    <p><strong>Date:</strong> ${escapeHtml(options.eventDate)}<br/>
+    <strong>Location:</strong> ${escapeHtml(options.eventLocation)}</p>
+    <p>We look forward to welcoming you.</p>
+    <p>Warm regards,<br/>Efua Black Ministry</p>
+  `;
+  await send({
+    to: options.registration.email,
+    subject: `Registration confirmed: ${options.eventTitle}`,
     text,
     html,
   });

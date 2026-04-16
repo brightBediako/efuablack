@@ -33,3 +33,23 @@ export async function listMusic() {
   await connectDB();
   return Music.find().sort({ yearRelease: -1, createdAt: -1 }).lean();
 }
+
+export async function updateMusicById(id: string, input: MusicCreateInput) {
+  await connectDB();
+  const doc = await Music.findByIdAndUpdate(
+    id,
+    {
+      ...input,
+      spotify: input.spotify?.trim() || undefined,
+      appleMusic: input.appleMusic?.trim() || undefined,
+      youtubeMusic: input.youtubeMusic?.trim() || undefined,
+    },
+    { new: true },
+  );
+  return doc;
+}
+
+export async function deleteMusicById(id: string) {
+  await connectDB();
+  return Music.findByIdAndDelete(id);
+}

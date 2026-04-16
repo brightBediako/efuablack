@@ -1,6 +1,8 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { ADMIN_SESSION_COOKIE, createAdminSessionToken, isAdminConfigured, verifyAdminPassword } from "@/lib/admin-auth";
+import { RateLimitedError, consumeRateSlot } from "@/lib/rate-limit";
+import { getClientIp } from "@/lib/request-ip";
 
 export async function POST(req: Request) {
   if (!isAdminConfigured()) {
@@ -8,6 +10,18 @@ export async function POST(req: Request) {
       { ok: false, message: "Admin login is not configured. Set ADMIN_PASSWORD on the server." },
       { status: 503 },
     );
+  }
+
+  try {
+    await consumeRateSlot("/api/admin/login", getClientIp(req), 6, 10 * 60 * 1000);
+  } catch (e) {
+    if (e instanceof RateLimitedError) {
+      return NextResponse.json(
+        { ok: false, message: "Too many login attempts. Please try again later." },
+        { status: 429 },
+      );
+    }
+    throw e;
   }
 
   let body: { password?: string };

@@ -11,3 +11,13 @@ export async function listMedia() {
   await connectDB();
   return Media.find().sort({ createdAt: -1 }).lean();
 }
+
+export async function updateMediaById(id: string, input: MediaCreateInput) {
+  await connectDB();
+  return Media.findByIdAndUpdate(id, input, { new: true });
+}
+
+export async function deleteMediaById(id: string) {
+  await connectDB();
+  return Media.findByIdAndDelete(id);
+}

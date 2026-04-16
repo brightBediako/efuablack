@@ -3,13 +3,15 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { MediaGalleryClient } from "@/components/MediaGalleryClient";
 import { SiteNav } from "@/components/SiteNav";
 import { defaultDescription } from "@/lib/site-config";
+import { listMedia } from "@/services/mediaService";
 
 export const metadata: Metadata = {
   title: "Media Gallery",
   description: `Photos and performances — ${defaultDescription}`,
 };
 
-export default function MediaPage() {
+export default async function MediaPage() {
+  const mediaItems = await listMedia();
   return (
     <>
       <SiteNav shell="media" active="media" />
@@ -51,7 +53,12 @@ export default function MediaPage() {
           </button>
         </div>
 
-        <MediaGalleryClient />
+        <MediaGalleryClient items={mediaItems.map((item) => ({
+          id: String(item._id),
+          title: item.title,
+          description: item.description,
+          picture: item.picture,
+        }))} />
       </main>
 
       <SiteFooter />

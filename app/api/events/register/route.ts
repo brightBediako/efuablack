@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { eventRegistrationSchema } from "@/lib/content-validators";
 import { zodIssuesToFields } from "@/lib/zod-api";
+import { notifyEventRegistrationToAdmin, sendEventRegistrationConfirmationToUser } from "@/services/emailService";
 import { registerForEvent } from "@/services/eventService";
 
 export async function POST(req: Request) {
@@ -26,10 +27,54 @@ export async function POST(req: Request) {
   }
 
   try {
-    const registration = await registerForEvent(parsed.data);
-    return NextResponse.json({ ok: true, data: registration.toObject() }, { status: 201 });
+    const { registration, event } = await registerForEvent(parsed.data);
+    const emailJobs = await Promise.allSettled([
+      notifyEventRegistrationToAdmin({
+        registration,
+        eventTitle: event.title,
+        eventDate: event.eventDate,
+        eventLocation: event.location,
+      }),
+      sendEventRegistrationConfirmationToUser({
+        registration,
+        eventTitle: event.title,
+        eventDate: event.eventDate,
+        eventLocation: event.location,
+      }),
+    ]);
+    const emailStatus = {
+      admin: emailJobs[0]?.status === "fulfilled" ? "sent" : "failed",
+      attendee: emailJobs[1]?.status === "fulfilled" ? "sent" : "failed",
+    } as const;
+    for (const result of emailJobs) {
+      if (result.status === "rejected") {
+        console.error("[api/events/register] email notification failed", {
+          error: result.reason instanceof Error ? result.reason.message : "unknown",
+        });
+      }
+    }
+    return NextResponse.json(
+      {
+        ok: true,
+        data: registration.toObject(),
+        email: emailStatus,
+      },
+      { status: 201 },
+    );
   } catch (e) {
     const msg = e instanceof Error ? e.message : "Unable to register.";
+    if (msg === "Email already registered for this event.") {
+      return NextResponse.json(
+        { ok: false, message: msg, fields: { email: msg } },
+        { status: 409 },
+      );
+    }
+    if (msg === "Phone already registered for this event.") {
+      return NextResponse.json(
+        { ok: false, message: msg, fields: { phone: msg } },
+        { status: 409 },
+      );
+    }
     const status = msg === "Event not found." || msg === "Invalid event id." ? 404 : 500;
     return NextResponse.json({ ok: false, message: msg }, { status });
   }
