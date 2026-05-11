@@ -1,5 +1,13 @@
 This is the **Efua Black** official site — a [Next.js](https://nextjs.org) app. The app sits at the **repository root** (where this `README.md` and `package.json` live), so you can connect the Git repo to Vercel without setting a subfolder **Root Directory**.
 
+## Project Description
+
+This project is the official website for **Efua Black** (Gospel Musician & Worship Minister). It’s built with **Next.js (App Router)** and includes:
+
+- **Public site**: Homepage hero and featured content, ministry pages, and a media/gallery experience.
+- **Bookings & subscriptions**: User-facing forms that persist submissions to **MongoDB** (and can optionally send notifications via SMTP).
+- **Admin area**: An `/admin` UI for managing site content and viewing submissions (protected via `ADMIN_PASSWORD`).
+
 ## Getting Started
 
 Install dependencies and run the development server:
